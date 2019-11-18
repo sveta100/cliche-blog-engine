@@ -1,0 +1,39 @@
+{
+    "compilerOptions": {
+        // this aligns with Vue's browser support
+        "target": "es5",
+        // this enables stricter inference for data properties on `this`
+        "strict": false,
+        // if using webpack 2+ or rollup, to leverage tree shaking:
+        "module": "es2015",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "experimentalDecorators": true,
+        "strictPropertyInitialization": false,
+        "typeRoots": ["./types", "./node_modules/@types"],
+        "baseUrl": ".",
+        "allowSyntheticDefaultImports": true,
+        "allowJs": true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "noImplicitAny": false,
+
+
+    },
+    "paths": {
+        "@/*": [
+            "src/*"
+        ]
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.tsx",
+        "src/**/*.vue",
+        "tests/**/*.ts",
+        "tests/**/*.tsx"
+    ],
+    "exclude": ["node_modules", "typings"],
+    "files": [
+        "vue-shims.d.ts"
+    ]
+}
