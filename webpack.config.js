@@ -6,7 +6,7 @@ import ImageminPlugin from "imagemin-webpack";
 module.exports = {
   mode: "development",
   entry: {
-    app: path.resolve(__dirname, "./src/app.ts")
+    app: path.resolve(__dirname, "./src/app.js")
   },
   output: {
     path: path.resolve(__dirname, "dist"),

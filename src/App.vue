@@ -7,14 +7,15 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import NavigationBar from "./components/NavigationComponent.vue";
-import { Vue, Component, Prop } from "vue-property-decorator";
 
-@Component({
+
+export default {
+  name: "App",
   components: { NavigationBar }
-})
-export default class App extends Vue {}
+}
+
 </script>
 <style>
 #app {

@@ -14,10 +14,11 @@
     </div>
   </div>
 </template>
-<script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
-@Component
-export default class PostTile extends Vue {}
+<script>
+
+export default {
+  name: "PostTile"
+}
 </script>
 
 <style lang="scss" scoped>

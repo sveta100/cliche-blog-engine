@@ -18,11 +18,12 @@
   </div>
 
 </template>
-<script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
+<script>
 
-@Component
-export default class NavigationBar extends Vue {}
+export default {
+  name: "NavigationBar"
+}
+
 </script>
 <style lang="scss">
 #nav-bar {

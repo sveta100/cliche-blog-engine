@@ -13,46 +13,28 @@
     <Button class="editor__button editor__button--right">Post</Button>
     </form>
 </template>
-<script lang="ts">
+<script>
 import marked from "marked/index";
 import Button from "../components/common/ButtonComponent.vue";
-import { Vue, Component, Prop } from "vue-property-decorator";
 
-@Component({
-  components: {
+export default{
+  name: "MarkdownPostEditor",
+  data: {
+    input: "# hello"
+  },
+   components: {
     Button
-  }
-})
-export default class MarkdownPostEditor extends Vue {
-  @Prop({ default: "# hello" })
-  input!: string;
-
-  //vue computed properties
-  get compiledMarkdown(): string {
-    return marked(this.input);
-  }
-
-  //vue methods
-  update(e: any): void {
-    this.input = e.target.value;
-  }
-
-  /*  lifecycle hook
-  mounted () {
-    this.greet()
-  } */
-
-  /* data properties in class based component 
-    can declare data as normal class property
-    ex: todos: [];
-  */
-
-  /*Writable computed properties use set method
-    set hello(name: string){
-      ...
+  },
+  methods:{
+    compiledMarkdown(){
+      return marked(this.input);
+    },
+    update(e){
+      this.input = e.target.value;  
     }
-  */
+  }
 }
+
 </script>
 
 <style lang="scss" scoped>

@@ -5,16 +5,17 @@
   </div>
 
 </template>
-<script lang="ts">
-import MarkdownPostEditor from "../components/MarkdownPostEditor.vue";
-import { Vue, Component, Provide, Prop } from "vue-property-decorator";
+<script>
 
-@Component({
-  components: {
+import MarkdownPostEditor from "../components/MarkdownPostEditor.vue";
+
+export default{
+  name: "PostEditor",
+   components: {
     MarkdownPostEditor
   }
-})
-export default class PostEditor extends Vue {}
+}
+
 </script>
 <style lang="scss" scoped>
 .editor {

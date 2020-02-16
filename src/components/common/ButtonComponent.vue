@@ -2,10 +2,12 @@
   <button class="super-btn super-btn--default">Post</button>
 </template>
 
-<script lang="ts">
-import { Vue, Component, Prop } from "vue-property-decorator";
-@Component
-export default class PrimaryButton extends Vue {}
+<script>
+
+export default {
+  name: "PrimaryButton"
+}
+
 </script>
 
 <style lang="scss">
