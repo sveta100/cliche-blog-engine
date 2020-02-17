@@ -1,13 +1,11 @@
 <template>
-  <button class="super-btn super-btn--default">Post</button>
+  <button class="super-btn super-btn--default" type="submit">Post</button>
 </template>
 
 <script>
-
 export default {
   name: "PrimaryButton"
-}
-
+};
 </script>
 
 <style lang="scss">

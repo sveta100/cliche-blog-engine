@@ -7,6 +7,7 @@ import https from "https";
 import fs from "fs";
 import dbconfig from "./config/db.config";
 import devServer from "./build/dev-server";
+import { routes } from "./routes";
 
 const app = express();
 
@@ -22,8 +23,9 @@ const indexHTML = (() => {
   );
 })();
 
+// Select which directories or files under public can be served to users
 app.use("/dist", express.static(path.resolve(__dirname, "./dist")));
-
+routes(app);
 devServer(app);
 
 const port = process.env.PORT || 4000;
@@ -31,7 +33,6 @@ const port = process.env.PORT || 4000;
 app.get("*", (req, res) => {
   res.write(indexHTML);
   res.end();
-  //res.sendfile(path.resolve(__dirname, "./public/index.html"));
 });
 
 //TODO: for later use
@@ -55,12 +56,9 @@ mongoose.Promise = global.Promise;
 
 //connecting to the db
 
-mongoose.connect(
-  dbconfig.url,
-  {
-    useNewUrlParser: true
-  }
-);
+mongoose.connect(dbconfig.url, {
+  useNewUrlParser: true
+});
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error: "));
