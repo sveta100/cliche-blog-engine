@@ -5,7 +5,7 @@
   "main": "server.js",
   "scripts": {
     "test": "karma start --single-run",
-    "dev": "node starter.js",
+    "dev": "nodemon starter.js",
     "build:prod": "webpack -p",
     "dev:debug": "nodemon --inspect src/app.ts"
   },
@@ -26,7 +26,7 @@
     "gridfs-stream": "^1.1.1",
     "loader": "^2.1.1",
     "marked": "^0.5.1",
-    "mongoose": "~3.6.2",
+    "mongoose": "^5.9.1",
     "style-loader": "^0.23.1",
     "vue": "^2.6.10",
     "vue-axios": "^2.1.5",
@@ -48,6 +48,7 @@
     "imagemin-webpack": "^5.1.0",
     "karma-chai": "^0.1.0",
     "node-sass": "^4.9.4",
+    "nodemon": "^2.0.2",
     "sass-loader": "^7.1.0",
     "typescript": "^3.7.2",
     "vue-class-component": "^7.1.0",

@@ -35,33 +35,19 @@ app.get("*", (req, res) => {
   res.end();
 });
 
-//TODO: for later use
-/* https
-  .createServer(
-    {
-      key: fs.readFileSync("./server.key"),
-      cert: fs.readFileSync("./server.cert")
-    },
-    app
-  )
-  .listen(port, () => {
-    console.log(`Server is listening on port using https ${port}`);
-  }); */
-
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
 
-mongoose.Promise = global.Promise;
-
 //connecting to the db
 
 mongoose.connect(dbconfig.url, {
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 });
 
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error: "));
-db.once("open", () => {
+db.on("open", () => {
   console.log("Connected to the db");
 });

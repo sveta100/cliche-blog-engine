@@ -1,20 +1,22 @@
-import mongoose from "mongoose";
-import Post from "../models/postModel";
-import postService from "../services/postService";
+const Post = require("../models/postModel");
+const mongoose = require("mongoose");
+
+var schema = new mongoose.Schema({ name: "string", size: "string" });
+var Tank = mongoose.model("Tank", schema);
 
 exports.list_all_posts = (req, res) => {
-  res.send("listing posts");
+  console.log("about to get a post");
+  Post.find({}, function(err, posts) {
+    if (err) return console.error(err);
+    console.log(posts);
+    res.send(posts);
+  });
 };
 
 exports.create_a_post = (req, res) => {
   const newPost = new Post(req.body);
-  console.log("about to create a post");
-  newPost
-    .save()
-    .then(post => {
-      res.send("new post saved to database");
-    })
-    .catch(err => {
-      res.status(400).send("unable to save to database");
-    });
+  newPost.save(function(err, post) {
+    if (err) return console.error(err);
+    console.log(post.title + " added your great post to the collection.");
+  });
 };
