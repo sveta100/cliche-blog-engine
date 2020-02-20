@@ -2,20 +2,13 @@ import { HTTP } from "../api/apiBase";
 import axios from "axios";
 
 export default {
-  getPosts() {
-    axios
-      .get("http://localhost:4000/api/posts")
-      .then(res => {
-        return "server data";
-      })
-      .catch(function(error) {
-        console.log(error);
-      });
+  async getPosts() {
+    let res = await axios.get(`http://localhost:4000/api/posts`);
+    return res.data;
   },
-  createBlogPost(post) {
-    axios.post("http://localhost:4000/api/post", post).then(res => {
-      console.log("posted");
-      return res.data;
-    });
+  async createBlogPost(post) {
+    console.log(post);
+    let res = axios.post("http://localhost:4000/api/post", post);
+    return res.data;
   }
 };

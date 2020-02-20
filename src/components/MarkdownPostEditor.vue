@@ -2,13 +2,22 @@
   <form class="editor" @submit="createPost">
     <div class="editor__title-area">
       <label class="text-input__label">Blog post title:</label>
-      <input type="text" class="text-input__input-box" v-model="post.title" title="post-title" />
+      <input
+        type="text"
+        class="text-input__input-box"
+        v-model="post.title"
+        title="post-title"
+      />
     </div>
     <div class="editor__area">
-      <textarea class="editor__area__textarea" :value="input" @input="update" debounce="300" />
+      <textarea
+        class="editor__area__textarea"
+        :value="this.input"
+        @input="update"
+        debounce="300"
+      />
       <div class="editor__area__preview" v-html="compiledMarkdown"></div>
     </div>
-
     <Button class="editor__button editor__button--right">Post</Button>
   </form>
 </template>
@@ -40,11 +49,13 @@ export default {
     update(e) {
       this.input = e.target.value;
     },
-    createPost(e) {
+    async createPost(e) {
       e.preventDefault();
       let curObj = this;
       this.post.content = this.input;
-      PostService.createBlogPost(this.post);
+      await PostService.createBlogPost(this.post).then(res => {
+        console.log(res);
+      });
     }
   }
 };
@@ -99,4 +110,3 @@ $margin: 10px;
   }
 }
 </style>
-
