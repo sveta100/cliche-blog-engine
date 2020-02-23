@@ -69,6 +69,7 @@ export default {
       console.log(this.isDraft);
       await PostService.createBlogPost(this.post);
       this.$toasted.show("You greatest post was saved");
+      this.$router.push("/");
     }
   }
 };
