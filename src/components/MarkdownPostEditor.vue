@@ -68,6 +68,7 @@ export default {
       this.post.isDraft = this.isDraft;
       console.log(this.isDraft);
       await PostService.createBlogPost(this.post);
+      this.$toasted.show("You greatest post was saved");
     }
   }
 };

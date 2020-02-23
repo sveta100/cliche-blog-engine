@@ -3,19 +3,16 @@
     <navigation-bar id="nav-bar" />
     <h1 id="mainTitle">In Wonderland of Programming</h1>
     <router-view></router-view>
-
   </div>
 </template>
 
 <script>
 import NavigationBar from "./components/NavigationComponent.vue";
 
-
 export default {
   name: "App",
   components: { NavigationBar }
-}
-
+};
 </script>
 <style>
 #app {
@@ -47,5 +44,3 @@ export default {
   float: right;
 }
 </style>
-
-
