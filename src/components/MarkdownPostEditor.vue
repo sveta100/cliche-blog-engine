@@ -1,14 +1,20 @@
 <template>
   <form class="editor" @submit="createPost">
+    <check-box
+      class="editor__draft-checkbox"
+      :label="'Still a Draft'"
+      v-model="isDraft"
+    />
     <div class="editor__title-area">
-      <label class="text-input__label">Blog post title:</label>
       <input
         type="text"
+        placeholder="Blog post title:"
         class="text-input__input-box"
         v-model="post.title"
         title="post-title"
       />
     </div>
+
     <div class="editor__area">
       <textarea
         class="editor__area__textarea"
@@ -18,12 +24,15 @@
       />
       <div class="editor__area__preview" v-html="compiledMarkdown"></div>
     </div>
-    <Button class="editor__button editor__button--right">Post</Button>
+    <div class="editor__buttons">
+      <primary-button :name="'Publish'" />
+    </div>
   </form>
 </template>
 <script>
 import marked from "marked/index";
-import Button from "../components/common/ButtonComponent.vue";
+import PrimaryButton from "../components/common/ButtonComponent.vue";
+import CheckBox from "../components/common/CheckBoxComponent.vue";
 import PostService from "../../services/PostService";
 
 export default {
@@ -31,14 +40,17 @@ export default {
   data() {
     return {
       input: "# hello",
+      isDraft: true,
       post: {
         title: "Great post",
-        content: ""
+        content: "",
+        isDraft: true
       }
     };
   },
   components: {
-    Button
+    PrimaryButton,
+    CheckBox
   },
   computed: {
     compiledMarkdown: function() {
@@ -53,9 +65,9 @@ export default {
       e.preventDefault();
       let curObj = this;
       this.post.content = this.input;
-      await PostService.createBlogPost(this.post).then(res => {
-        console.log(res);
-      });
+      this.post.isDraft = this.isDraft;
+      console.log(this.isDraft);
+      await PostService.createBlogPost(this.post);
     }
   }
 };
@@ -71,25 +83,37 @@ $margin: 10px;
   height: 100%;
   width: 100%;
   min-height: 400px;
+  justify-content: space-between;
+  align-items: flex-start;
+
+  &__draft-checkbox {
+    margin-left: auto;
+  }
 
   & .text-input__input-box {
     padding: 10px;
     min-width: 400px;
+    border-width: 0 0 1px 0;
+    border-color: darkgray;
+    outline: none;
 
     &:focus {
-      border-width: 0 0 1px 0;
-      border-color: darkgray;
-      outline: none;
+      border-color: dodgerblue;
+      box-shadow: 0 4px 6px -6px dodgerblue;
     }
   }
 
   &__title-area {
-    margin-bottom: 30px;
+    margin-bottom: 2rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
   }
 
   &__area {
     display: flex;
     height: 50vh;
+    width: 100%;
 
     &__textarea {
       width: 50%;
@@ -103,10 +127,10 @@ $margin: 10px;
     }
   }
 
-  &__button {
-    &--right {
-      margin-left: auto;
-    }
+  &__buttons {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
   }
 }
 </style>

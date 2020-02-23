@@ -1,10 +1,11 @@
 <template>
-  <button class="super-btn super-btn--default" type="submit">Post</button>
+  <button class="super-btn super-btn--default" type="submit">{{ name }}</button>
 </template>
 
 <script>
 export default {
-  name: "PrimaryButton"
+  name: "PrimaryButton",
+  props: ["name"]
 };
 </script>
 
@@ -13,6 +14,8 @@ export default {
   width: 200px;
   height: 40px;
   margin: 20px;
+  display: flex;
+  justify-content: center;
   font-weight: bold;
   font-size: 16px;
   padding: 10px;
