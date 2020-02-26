@@ -6,17 +6,22 @@
     </div>
     <div class="container">
       <img id="card-img" alt="img" />
-      <p>
-        {{ post.content }}
-      </p>
+      <p class="card__content" v-html="compiledMarkdown"></p>
     </div>
   </div>
 </template>
 <script>
 import DateFormat from "./DateFormatComponent";
+import marked from "marked/index";
+
 export default {
   name: "PostTile",
   props: ["post"],
+  computed: {
+    compiledMarkdown: function() {
+      return marked(this.post.content, { sanitize: true });
+    }
+  },
   components: {
     DateFormat
   }
@@ -27,6 +32,7 @@ export default {
 .card {
   width: 100%;
   margin: 10px;
+  padding: 10px;
   display: inline-block;
 }
 

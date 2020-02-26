@@ -1,7 +1,12 @@
 import Post from "../models/postModel";
 import mongoose from "mongoose";
 
-var schema = new mongoose.Schema({ name: "string", size: "string" });
+exports.list_all_published_posts = (req, res) => {
+  Post.find({ isDraft: false }, (err, posts) => {
+    if (err) return console.log(err, posts);
+    res.send(posts);
+  });
+};
 
 exports.list_all_posts = (req, res) => {
   console.log("about to get a post");

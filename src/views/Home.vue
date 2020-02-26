@@ -19,7 +19,7 @@ export default {
   },
   methods: {
     async init() {
-      PostService.getPosts().then(
+      PostService.getPublishedPosts().then(
         (posts => {
           console.log(this);
           this.$set(this, "posts", posts);
