@@ -1,7 +1,6 @@
 "use strict";
-import path from "path";
-import { VueLoaderPlugin } from "vue-loader";
-import ImageminPlugin from "imagemin-webpack";
+const path = require("path");
+const { VueLoaderPlugin } = require("vue-loader");
 
 module.exports = {
   mode: "development",

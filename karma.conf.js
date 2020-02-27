@@ -1,10 +1,10 @@
-var webpackConfig = require("./build/webpack.config.js");
+const webpackConfig = require("./webpack.config");
 
 module.exports = function(config) {
   config.set({
-    frameworks: ["mocha"],
+    frameworks: ["mocha", "chai"],
 
-    files: ["test/**/*.spec.js"],
+    files: ["tests/**/*.spec.js"],
 
     preprocessors: {
       "**/*.spec.js": ["webpack", "sourcemap"]
