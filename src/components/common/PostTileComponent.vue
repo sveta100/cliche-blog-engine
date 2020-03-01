@@ -12,7 +12,7 @@
 </template>
 <script>
 import DateFormat from "./DateFormatComponent";
-import marked from "marked/index";
+import marked from "marked";
 
 export default {
   name: "PostTile",

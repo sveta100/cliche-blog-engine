@@ -20,25 +20,13 @@ module.exports = {
           hotReload: true
         }
       },
-
-      {
-        test: /\.tsx?$/,
-        loader: "ts-loader",
-        exclude: /node_modules/,
-        options: {
-          appendTsSuffixTo: [/\.vue$/]
-        }
-      },
       {
         test: /\.scss$/,
         use: [
           "vue-style-loader", //injects styles into DOM
           "css-loader",
           {
-            loader: "sass-loader",
-            options: {
-              indentedSyntax: false
-            }
+            loader: "sass-loader"
           }
         ]
       },

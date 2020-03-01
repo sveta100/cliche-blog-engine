@@ -30,7 +30,7 @@
   </form>
 </template>
 <script>
-import marked from "marked/index";
+import marked from "marked";
 import PrimaryButton from "../components/common/ButtonComponent.vue";
 import CheckBox from "../components/common/CheckBoxComponent.vue";
 import PostService from "../../services/PostService";
