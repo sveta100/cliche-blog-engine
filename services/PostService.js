@@ -1,8 +1,8 @@
-import { HTTP } from "../api/apiBase";
 import axios from "axios";
 
 export default {
   async getPosts() {
+    console.log("coming here");
     let res = await axios.get(`http://localhost:4000/api/posts`);
     return res.data;
   },

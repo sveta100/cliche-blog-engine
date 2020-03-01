@@ -3,19 +3,16 @@
     <h3>Any great thoughts to express?</h3>
     <MarkdownPostEditor />
   </div>
-
 </template>
 <script>
-
 import MarkdownPostEditor from "../components/MarkdownPostEditor.vue";
 
-export default{
+export default {
   name: "PostEditor",
-   components: {
+  components: {
     MarkdownPostEditor
   }
-}
-
+};
 </script>
 <style lang="scss" scoped>
 .editor {
@@ -26,4 +23,3 @@ export default{
   flex-direction: column;
 }
 </style>
-
