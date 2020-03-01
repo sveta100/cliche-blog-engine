@@ -1,6 +1,6 @@
 // Transpile all code following this line with babel
-require("babel-register")({
-  presets: ["env"]
+require("@babel/register")({
+  presets: ["@babel/env"]
 });
 
 // Import the rest of the app

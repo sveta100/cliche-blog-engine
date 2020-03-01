@@ -3,7 +3,6 @@ import bodyParser from "body-parser";
 import cors from "cors";
 import mongoose from "mongoose";
 import path from "path";
-import https from "https";
 import fs from "fs";
 import dbconfig from "./config/db.config";
 import devServer from "./build/dev-server";
