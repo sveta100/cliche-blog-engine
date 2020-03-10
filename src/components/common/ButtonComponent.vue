@@ -1,11 +1,16 @@
 <template>
-  <button class="super-btn super-btn--default" type="submit">{{ name }}</button>
+  <button class="super-btn super-btn--default" @click="handleClick" type="button">{{ name }}</button>
 </template>
 
 <script>
 export default {
   name: "PrimaryButton",
-  props: ["name"]
+  props: ["name"],
+  methods: {
+    handleClick: function() {
+      this.$emit("click");
+    }
+  }
 };
 </script>
 

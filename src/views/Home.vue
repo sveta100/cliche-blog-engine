@@ -1,12 +1,13 @@
 <template>
   <div>
-    <PostTile v-for="post in posts" v-bind:key="post.id" v-bind:post="post" />
+    <PostList v-bind:posts="posts" />
   </div>
 </template>
 <style lang="scss"></style>
 <script>
-import PostTile from "../components/common/PostTileComponent.vue";
-import PostService from "../../services/PostService";
+import PostList from "../components/PostListComponent.vue";
+import PostService from "@services/PostService";
+
 export default {
   name: "Home",
   data: function() {
@@ -15,7 +16,7 @@ export default {
     };
   },
   components: {
-    PostTile
+    PostList
   },
   methods: {
     async init() {

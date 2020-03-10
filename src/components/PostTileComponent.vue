@@ -11,7 +11,7 @@
   </div>
 </template>
 <script>
-import DateFormat from "./DateFormatComponent";
+import DateFormat from "./common/DateFormatComponent";
 import marked from "marked/index";
 
 export default {

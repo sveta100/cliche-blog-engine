@@ -1,10 +1,5 @@
 <template>
-  <form class="editor" @submit="createPost">
-    <check-box
-      class="editor__draft-checkbox"
-      :label="'Still a Draft'"
-      v-model="isDraft"
-    />
+  <form class="editor">
     <div class="editor__title-area">
       <input
         type="text"
@@ -16,16 +11,12 @@
     </div>
 
     <div class="editor__area">
-      <textarea
-        class="editor__area__textarea"
-        :value="this.input"
-        @input="update"
-        debounce="300"
-      />
+      <textarea class="editor__area__textarea" :value="this.input" @input="update" debounce="300" />
       <div class="editor__area__preview" v-html="compiledMarkdown"></div>
     </div>
     <div class="editor__buttons">
-      <primary-button :name="'Publish'" />
+      <primary-button :name="'Save as Draft'" @click="createPost(true)" />
+      <primary-button :name="'Publish'" @click="createPost(false)" />
     </div>
   </form>
 </template>
@@ -40,7 +31,6 @@ export default {
   data() {
     return {
       input: "# hello",
-      isDraft: true,
       post: {
         title: "Great post",
         content: "",
@@ -49,8 +39,7 @@ export default {
     };
   },
   components: {
-    PrimaryButton,
-    CheckBox
+    PrimaryButton
   },
   computed: {
     compiledMarkdown: function() {
@@ -61,12 +50,10 @@ export default {
     update(e) {
       this.input = e.target.value;
     },
-    async createPost(e) {
-      e.preventDefault();
+    async createPost(isDraft, e) {
       let curObj = this;
       this.post.content = this.input;
-      this.post.isDraft = this.isDraft;
-      console.log(this.isDraft);
+      this.post.isDraft = isDraft;
       await PostService.createBlogPost(this.post);
       this.$toasted.show("You greatest post was saved");
       this.$router.push("/");
