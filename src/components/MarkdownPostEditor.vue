@@ -4,15 +4,22 @@
       <input
         type="text"
         placeholder="Blog post title:"
-        class="text-input__input-box"
+        class="text-input__input-box margin-bottom"
         v-model="post.title"
+        title="post-title"
+      />
+      <textarea
+        type="text"
+        placeholder="Blog post summary:"
+        v-model="post.summary"
+        class="textarea"
         title="post-title"
       />
     </div>
 
     <div class="editor__area">
-      <textarea class="editor__area__textarea" :value="this.input" @input="update" debounce="300" />
-      <div class="editor__area__preview" v-html="compiledMarkdown"></div>
+      <textarea class="textarea editor__writer" :value="this.input" @input="update" debounce="300" />
+      <div class="editor__preview" v-html="compiledMarkdown"></div>
     </div>
     <div class="editor__buttons">
       <primary-button :name="'Save as Draft'" @click="createPost(true)" />
@@ -79,6 +86,12 @@ $margin: 10px;
     margin-left: auto;
   }
 
+  &__title-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   & .text-input__input-box {
     padding: 10px;
     min-width: 400px;
@@ -101,25 +114,39 @@ $margin: 10px;
 
   &__area {
     display: flex;
-    height: 50vh;
+    min-height: 80vh;
     width: 100%;
+  }
 
-    &__textarea {
-      width: 50%;
-      font-size: $font-size;
-    }
+  &__writer {
+    width: 50%;
+    font-size: $font-size;
+  }
 
-    &__preview {
-      height: 100%;
-      background-color: #fcf8ff;
-      width: 50%;
-    }
+  &__preview {
+    background-color: #fcf8ff;
+    width: 50%;
   }
 
   &__buttons {
     width: 100%;
     display: flex;
     justify-content: flex-end;
+  }
+}
+
+.textarea {
+  min-height: 100px;
+  padding: 0.5rem 1rem;
+  overflow: visible;
+  border: 1px solid;
+  border-radius: 5px;
+  border-color: palevioletred;
+  width: 50%;
+
+  &:focus {
+    outline: none;
+    border-width: 2px;
   }
 }
 </style>

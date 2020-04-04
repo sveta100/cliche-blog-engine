@@ -6,6 +6,7 @@
 <style lang="scss"></style>
 <script>
 import PostTile from "./PostTileComponent.vue";
+
 export default {
   name: "PostList",
   props: ["posts"],
