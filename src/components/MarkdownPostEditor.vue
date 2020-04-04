@@ -1,31 +1,29 @@
 <template>
-  <form class="editor" @submit="createPost">
-    <check-box
-      class="editor__draft-checkbox"
-      :label="'Still a Draft'"
-      v-model="isDraft"
-    />
+  <form class="editor">
     <div class="editor__title-area">
       <input
         type="text"
         placeholder="Blog post title:"
-        class="text-input__input-box"
+        class="text-input__input-box margin-bottom"
         v-model="post.title"
+        title="post-title"
+      />
+      <textarea
+        type="text"
+        placeholder="Blog post summary:"
+        v-model="post.summary"
+        class="textarea"
         title="post-title"
       />
     </div>
 
     <div class="editor__area">
-      <textarea
-        class="editor__area__textarea"
-        :value="this.input"
-        @input="update"
-        debounce="300"
-      />
-      <div class="editor__area__preview" v-html="compiledMarkdown"></div>
+      <textarea class="textarea editor__writer" :value="this.input" @input="update" debounce="300" />
+      <div class="editor__preview" v-html="compiledMarkdown"></div>
     </div>
     <div class="editor__buttons">
-      <primary-button :name="'Publish'" />
+      <primary-button :name="'Save as Draft'" @click="createPost(true)" />
+      <primary-button :name="'Publish'" @click="createPost(false)" />
     </div>
   </form>
 </template>
@@ -40,7 +38,6 @@ export default {
   data() {
     return {
       input: "# hello",
-      isDraft: true,
       post: {
         title: "Great post",
         content: "",
@@ -49,8 +46,7 @@ export default {
     };
   },
   components: {
-    PrimaryButton,
-    CheckBox
+    PrimaryButton
   },
   computed: {
     compiledMarkdown: function() {
@@ -61,12 +57,10 @@ export default {
     update(e) {
       this.input = e.target.value;
     },
-    async createPost(e) {
-      e.preventDefault();
+    async createPost(isDraft, e) {
       let curObj = this;
       this.post.content = this.input;
-      this.post.isDraft = this.isDraft;
-      console.log(this.isDraft);
+      this.post.isDraft = isDraft;
       await PostService.createBlogPost(this.post);
       this.$toasted.show("You greatest post was saved");
       this.$router.push("/");
@@ -92,6 +86,12 @@ $margin: 10px;
     margin-left: auto;
   }
 
+  &__title-area {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   & .text-input__input-box {
     padding: 10px;
     min-width: 400px;
@@ -114,25 +114,39 @@ $margin: 10px;
 
   &__area {
     display: flex;
-    height: 50vh;
+    min-height: 80vh;
     width: 100%;
+  }
 
-    &__textarea {
-      width: 50%;
-      font-size: $font-size;
-    }
+  &__writer {
+    width: 50%;
+    font-size: $font-size;
+  }
 
-    &__preview {
-      height: 100%;
-      background-color: #fcf8ff;
-      width: 50%;
-    }
+  &__preview {
+    background-color: #fcf8ff;
+    width: 50%;
   }
 
   &__buttons {
     width: 100%;
     display: flex;
     justify-content: flex-end;
+  }
+}
+
+.textarea {
+  min-height: 100px;
+  padding: 0.5rem 1rem;
+  overflow: visible;
+  border: 1px solid;
+  border-radius: 5px;
+  border-color: palevioletred;
+  width: 50%;
+
+  &:focus {
+    outline: none;
+    border-width: 2px;
   }
 }
 </style>

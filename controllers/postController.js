@@ -9,17 +9,14 @@ exports.list_all_published_posts = (req, res) => {
 };
 
 exports.list_all_posts = (req, res) => {
-  console.log("about to get a post");
-  Post.find({}, function(err, posts) {
+  Post.find({ isDraft: false }, function(err, posts) {
     if (err) return console.error(err);
-    console.log(posts);
     res.send(posts);
   });
 };
 
 exports.create_a_post = (req, res) => {
   const newPost = new Post(req.body);
-  console.log(newPost);
   newPost.save(function(err, post) {
     if (err) return console.error(err);
     console.log(post.title + " added your great post to the collection.");

@@ -24,6 +24,7 @@ const indexHTML = (() => {
 
 // Select which directories or files under public can be served to users
 app.use("/dist", express.static(path.resolve(__dirname, "./dist")));
+
 routes(app);
 devServer(app);
 
@@ -37,8 +38,6 @@ app.get("*", (req, res) => {
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
-
-//connecting to the db
 
 mongoose.connect(dbconfig.url, {
   useNewUrlParser: true,

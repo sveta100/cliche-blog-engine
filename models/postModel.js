@@ -5,6 +5,7 @@ const PostSchema = new mongoose.Schema(
     title: String,
     tags: [String],
     content: String,
+    summary: String,
     isDraft: Boolean,
     postedBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" }
   },

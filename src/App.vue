@@ -1,8 +1,10 @@
 <template>
   <div id="app">
     <navigation-bar id="nav-bar" />
-    <h1 id="mainTitle">In Wonderland of Programming</h1>
-    <router-view></router-view>
+    <div class="flex-container">
+      <h1 id="mainTitle">In Wonderland of Programming</h1>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 
@@ -14,24 +16,39 @@ export default {
   components: { NavigationBar }
 };
 </script>
-<style>
+<style  lang="scss">
+@import "./styles/main";
+
+body {
+  font-family: "Roboto", sans-serif;
+}
+
 #app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  width: 80%;
-  display: block;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-right: auto;
   margin-left: auto;
+  color: $primary;
 }
 
-#nav-bar {
-  margin: 0px 20px 50px 0px;
-  float: left;
-  height: 50px;
+#mainTitle {
+  font-family: "Comic Neue", cursive;
+  font-size: 3em;
+  clear: both;
+  font-weight: 600;
+  margin-bottom: 50px;
+}
+
+.flex-container {
+  display: flex;
   width: 100%;
+  flex-direction: column;
 }
 
 .column-one {

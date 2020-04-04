@@ -1,18 +1,24 @@
 <template>
-  <div class="card">
-    <div class="left-header">
-      <h2 id="post-title">{{ post.title }}</h2>
-      <p id="post-date-header"><date-format :rawDate="post.createdAt" /></p>
+  <div>
+    <div class="card">
+      <div class="left-header">
+        <h2 id="post-title">{{ post.title }}</h2>
+        <p id="post-date-header">
+          <date-format :rawDate="post.createdAt" />
+        </p>
+      </div>
+      <div class="container">
+        <p class="card__content" v-html="compiledMarkdown"></p>
+        <h5>Read more...</h5>
+      </div>
     </div>
-    <div class="container">
-      <img id="card-img" alt="img" />
-      <p class="card__content" v-html="compiledMarkdown"></p>
-    </div>
+    <PostDivider :text="post.title" />
   </div>
 </template>
 <script>
-import DateFormat from "./DateFormatComponent";
-import marked from "marked";
+import DateFormat from "./common/DateFormatComponent";
+import marked from "marked/index";
+import PostDivider from "./common/PostDivider";
 
 export default {
   name: "PostTile",
@@ -23,27 +29,28 @@ export default {
     }
   },
   components: {
-    DateFormat
+    DateFormat,
+    PostDivider
   }
 };
 </script>
 
 <style lang="scss" scoped>
 .card {
-  width: 100%;
+  width: 50%;
   margin: 10px;
   padding: 10px;
   display: inline-block;
 }
 
 .card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  cursor: pointer;
 }
 
 .left-header {
   float: left;
   clear: both;
-  margin: 10px 5px 30px 5px;
+  margin: 10px 5px 0px 5px;
 }
 
 #card-img {

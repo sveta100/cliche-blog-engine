@@ -1,12 +1,18 @@
 <template>
-  <div>
-    <PostTile v-for="post in posts" v-bind:key="post.id" v-bind:post="post" />
+  <div class="home-container">
+    <div class="home-container__left">
+      <PostList v-bind:posts="posts" />
+    </div>
+    <div class="home-container__right">
+      <img class="portrait" src="../assets/images/portrait.jpg" />
+    </div>
   </div>
 </template>
-<style lang="scss"></style>
 <script>
-import PostTile from "../components/common/PostTileComponent.vue";
-import PostService from "../../services/PostService";
+import PostList from "../components/PostListComponent.vue";
+import PostService from "@services/PostService";
+import PortraitImg from "../assets/images/portrait.jpg";
+
 export default {
   name: "Home",
   data: function() {
@@ -15,7 +21,7 @@ export default {
     };
   },
   components: {
-    PostTile
+    PostList
   },
   methods: {
     async init() {
@@ -32,3 +38,14 @@ export default {
   }
 };
 </script>
+<style lang="scss">
+.home-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.portrait {
+  border-radius: 50%;
+  max-width: 100px;
+}
+</style>
