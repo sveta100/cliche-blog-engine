@@ -25,7 +25,7 @@
 </template>
 <script>
 export default {
-  name: "NavigationBar"
+	name: 'NavigationBar',
 };
 </script>
 <style lang="scss">
@@ -51,4 +51,3 @@ export default {
   }
 }
 </style>
-

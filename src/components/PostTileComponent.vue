@@ -11,8 +11,10 @@
         </p>
       </div>
       <div class="container">
-        <p class="card__content"
-v-html="compiledMarkdown" />
+        <p
+          class="card__content"
+          v-html="compiledMarkdown"
+        />
         <h5>Read more...</h5>
       </div>
     </div>
@@ -20,27 +22,27 @@ v-html="compiledMarkdown" />
   </div>
 </template>
 <script>
-import DateFormat from "./common/DateFormatComponent";
-import marked from "marked";
-import PostDivider from "./common/PostDivider";
+import marked from 'marked';
+import DateFormat from './common/DateFormatComponent.vue';
+import PostDivider from './common/PostDivider.vue';
 
 export default {
-  name: "PostTile",
-  components: {
-    DateFormat,
-    PostDivider
-  },
-  props: {
-    post: {
-      type: Object,
-      default: Object.new({})
-    }
-  },
-  computed: {
-    compiledMarkdown: function() {
-      return marked(this.post.content, { sanitize: true });
-    }
-  }
+	name: 'PostTile',
+	components: {
+		DateFormat,
+		PostDivider,
+	},
+	props: {
+		post: {
+			type: Object,
+			default: () => {},
+		},
+	},
+	computed: {
+		compiledMarkdown() {
+			return marked(this.post.content, { sanitize: true });
+		},
+	},
 };
 </script>
 

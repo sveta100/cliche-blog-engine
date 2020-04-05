@@ -1,15 +1,15 @@
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
 const PostSchema = new mongoose.Schema(
-  {
-    title: String,
-    tags: [String],
-    content: String,
-    summary: String,
-    isDraft: Boolean,
-    postedBy: { type: mongoose.Schema.Types.ObjectId, ref: "User" }
-  },
-  { timestamps: true }
+	{
+		title: String,
+		tags: [String],
+		content: String,
+		summary: String,
+		isDraft: Boolean,
+		postedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+	},
+	{ timestamps: true },
 );
 
-module.exports = mongoose.model("post", PostSchema);
+module.exports = mongoose.model('post', PostSchema);

@@ -58,7 +58,7 @@
   </div>
 </template>
 <script>
-import PostService from '@services/PostService';
+import PostService from '../../services/PostService';
 import PostList from '../components/PostListComponent.vue';
 
 export default {

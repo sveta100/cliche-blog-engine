@@ -3,19 +3,19 @@
 </template>
 
 <script>
-import moment from "moment";
+import moment from 'moment';
 
 export default {
-  name: "DateFormat",
-  props: {
-    rawDate: {
-      type: Date,
-      default: Date.now()
-    }
-  },
+	name: 'DateFormat',
+	props: {
+		rawDate: {
+			type: String,
+			default: Date.now().toString(),
+		},
+	},
 
-  methods: {
-    moment
-  }
+	methods: {
+		moment,
+	},
 };
 </script>

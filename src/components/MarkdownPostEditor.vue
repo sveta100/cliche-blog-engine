@@ -44,8 +44,8 @@
 </template>
 <script>
 import marked from 'marked';
-import PrimaryButton from './common/ButtonComponent.vue';
 import PostService from '../../services/PostService';
+import PrimaryButton from './common/ButtonComponent.vue';
 
 export default {
 	name: 'MarkdownPostEditor',

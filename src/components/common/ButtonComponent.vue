@@ -10,18 +10,18 @@
 
 <script>
 export default {
-  name: "PrimaryButton",
-  props: {
-    name: {
-      type: String,
-      default: "Button"
-    }
-  },
-  methods: {
-    handleClick: function() {
-      this.$emit("click");
-    }
-  }
+	name: 'PrimaryButton',
+	props: {
+		name: {
+			type: String,
+			default: 'Button',
+		},
+	},
+	methods: {
+		handleClick() {
+			this.$emit('click');
+		},
+	},
 };
 </script>
 

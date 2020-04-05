@@ -1,12 +1,12 @@
-import monggose from "mongoose";
+import mongoose from 'mongoose';
 
-const CommentSchema = new monggose.Schema(
-  {
-    comment: String,
-    user: { name: String, email: String },
-    postId: { type: mongoose.Schema.Types.ObjectId, ref: "Post" }
-  },
-  { timestamps: true }
+const CommentSchema = new mongoose.Schema(
+	{
+		comment: String,
+		user: { name: String, email: String },
+		postId: { type: mongoose.Schema.Types.ObjectId, ref: 'Post' },
+	},
+	{ timestamps: true },
 );
 
-module.exports = monggose.model("comment", CommentSchema);
+module.exports = mongoose.model('comment', CommentSchema);

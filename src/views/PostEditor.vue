@@ -5,13 +5,13 @@
   </div>
 </template>
 <script>
-import MarkdownPostEditor from "../components/MarkdownPostEditor.vue";
+import MarkdownPostEditor from '../components/MarkdownPostEditor.vue';
 
 export default {
-  name: "PostEditor",
-  components: {
-    MarkdownPostEditor
-  }
+	name: 'PostEditor',
+	components: {
+		MarkdownPostEditor,
+	},
 };
 </script>
 <style lang="scss" scoped>
