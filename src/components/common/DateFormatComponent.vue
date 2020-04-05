@@ -7,7 +7,12 @@ import moment from "moment";
 
 export default {
   name: "DateFormat",
-  props: ["rawDate"],
+  props: {
+    rawDate: {
+      type: Date,
+      default: Date.now()
+    }
+  },
 
   methods: {
     moment

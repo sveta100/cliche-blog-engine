@@ -1,11 +1,10 @@
 <template>
-  <div class="divider"></div>
+  <div class="divider" />
 </template>
 
 <script>
 export default {
   name: "PostDivider",
-  props: ["text"]
 };
 </script>
 
@@ -14,7 +13,8 @@ export default {
   position: relative;
   margin-bottom: 30px;
   height: 1px;
-  &:after {
+
+  &::after {
     content: "";
     position: absolute;
     top: 0;
@@ -22,12 +22,13 @@ export default {
     transform: translateX(-50%);
     width: 50%;
     height: 1px;
-    background-image: linear-gradient(
-      to right,
-      transparent,
-      rgb(48, 49, 51),
-      transparent
-    );
+    background-image:
+      linear-gradient(
+        to right,
+        transparent,
+        rgb(48, 49, 51),
+        transparent
+      );
   }
 }
 </style>

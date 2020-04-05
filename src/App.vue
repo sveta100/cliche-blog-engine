@@ -2,39 +2,44 @@
   <div id="app">
     <navigation-bar id="nav-bar" />
     <div class="flex-container">
-      <h1 id="mainTitle">In Wonderland of Programming</h1>
-      <router-view></router-view>
+      <h1 id="mainTitle">
+        In Wonderland of Programming
+      </h1>
+      <router-view />>
     </div>
   </div>
 </template>
 
 <script>
-import NavigationBar from "./components/NavigationComponent.vue";
+import NavigationBar from './components/NavigationComponent.vue';
 
 export default {
-  name: "App",
-  components: { NavigationBar }
+	name: 'App',
+	components: { NavigationBar },
 };
 </script>
-<style  lang="scss">
-@import "./styles/main";
-
+<style lang="scss">
 body {
   font-family: "Roboto", sans-serif;
+}
+
+h1,
+h2,
+h3 {
+  color: $secondary;
 }
 
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
+  color: $primary;
   width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-right: auto;
   margin-left: auto;
-  color: $primary;
 }
 
 #mainTitle {

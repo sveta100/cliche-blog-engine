@@ -1,14 +1,18 @@
+/* eslint-disable vue/no-v-html */
 <template>
   <div>
     <div class="card">
       <div class="left-header">
-        <h2 id="post-title">{{ post.title }}</h2>
+        <h2 id="post-title">
+          {{ post.title }}
+        </h2>
         <p id="post-date-header">
-          <date-format :rawDate="post.createdAt" />
+          <date-format :raw-date="post.createdAt" />
         </p>
       </div>
       <div class="container">
-        <p class="card__content" v-html="compiledMarkdown"></p>
+        <p class="card__content"
+v-html="compiledMarkdown" />
         <h5>Read more...</h5>
       </div>
     </div>
@@ -17,27 +21,32 @@
 </template>
 <script>
 import DateFormat from "./common/DateFormatComponent";
-import marked from "marked/index";
+import marked from "marked";
 import PostDivider from "./common/PostDivider";
 
 export default {
   name: "PostTile",
-  props: ["post"],
+  components: {
+    DateFormat,
+    PostDivider
+  },
+  props: {
+    post: {
+      type: Object,
+      default: Object.new({})
+    }
+  },
   computed: {
     compiledMarkdown: function() {
       return marked(this.post.content, { sanitize: true });
     }
-  },
-  components: {
-    DateFormat,
-    PostDivider
   }
 };
 </script>
 
 <style lang="scss" scoped>
 .card {
-  width: 50%;
+  width: 100%;
   margin: 10px;
   padding: 10px;
   display: inline-block;
@@ -50,7 +59,7 @@ export default {
 .left-header {
   float: left;
   clear: both;
-  margin: 10px 5px 0px 5px;
+  margin: 10px 5px 0 5px;
 }
 
 #card-img {
@@ -60,11 +69,11 @@ export default {
 }
 
 #post-title {
-  margin: 0px 5px;
+  margin: 0 5px;
 }
 
 #post-date-header {
-  margin: 0px 5px;
+  margin: 0 5px;
   float: left;
 }
 

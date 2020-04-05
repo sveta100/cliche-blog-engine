@@ -1,11 +1,22 @@
 <template>
-  <button class="super-btn super-btn--default" @click="handleClick" type="button">{{ name }}</button>
+  <button
+    class="super-btn super-btn--default"
+    type="button"
+    @click="handleClick"
+  >
+    {{ name }}
+  </button>
 </template>
 
 <script>
 export default {
   name: "PrimaryButton",
-  props: ["name"],
+  props: {
+    name: {
+      type: String,
+      default: "Button"
+    }
+  },
   methods: {
     handleClick: function() {
       this.$emit("click");

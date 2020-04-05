@@ -1,18 +1,23 @@
 <template>
-  <div>
-    <PostTile v-for="post in posts" v-bind:key="post.id" v-bind:post="post" />
-  </div>
+	<div>
+		<PostTile v-for="post in posts" :key="post.id" :post="post" />
+	</div>
 </template>
-<style lang="scss"></style>
+
 <script>
 import PostTile from "./PostTileComponent.vue";
 
 export default {
-  name: "PostList",
-  props: ["posts"],
+	name: "PostList",
 
-  components: {
-    PostTile
-  }
+	components: {
+		PostTile,
+	},
+	props: {
+		posts: {
+			type: Array,
+			default: () => [],
+		},
+	},
 };
 </script>

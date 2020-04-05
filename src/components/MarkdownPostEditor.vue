@@ -1,71 +1,84 @@
+/* eslint-disable vue/no-v-html */
 <template>
   <form class="editor">
     <div class="editor__title-area">
       <input
+        v-model="post.title"
         type="text"
         placeholder="Blog post title:"
         class="text-input__input-box margin-bottom"
-        v-model="post.title"
         title="post-title"
-      />
+      >
       <textarea
+        v-model="post.summary"
         type="text"
         placeholder="Blog post summary:"
-        v-model="post.summary"
         class="textarea"
         title="post-title"
       />
     </div>
 
     <div class="editor__area">
-      <textarea class="textarea editor__writer" :value="this.input" @input="update" debounce="300" />
-      <div class="editor__preview" v-html="compiledMarkdown"></div>
+      <textarea
+        class="textarea editor__writer"
+        :value="input"
+        debounce="300"
+        @input="update"
+      />
+      <div
+        class="editor__preview"
+        v-html="compiledMarkdown"
+      />
     </div>
     <div class="editor__buttons">
-      <primary-button :name="'Save as Draft'" @click="createPost(true)" />
-      <primary-button :name="'Publish'" @click="createPost(false)" />
+      <primary-button
+        :name="'Save as Draft'"
+        @click="createPost(true)"
+      />
+      <primary-button
+        :name="'Publish'"
+        @click="createPost(false)"
+      />
     </div>
   </form>
 </template>
 <script>
-import marked from "marked";
-import PrimaryButton from "../components/common/ButtonComponent.vue";
-import CheckBox from "../components/common/CheckBoxComponent.vue";
-import PostService from "../../services/PostService";
+import marked from 'marked';
+import PrimaryButton from './common/ButtonComponent.vue';
+import PostService from '../../services/PostService';
 
 export default {
-  name: "MarkdownPostEditor",
-  data() {
-    return {
-      input: "# hello",
-      post: {
-        title: "Great post",
-        content: "",
-        isDraft: true
-      }
-    };
-  },
-  components: {
-    PrimaryButton
-  },
-  computed: {
-    compiledMarkdown: function() {
-      return marked(this.input, { sanitize: true });
-    }
-  },
-  methods: {
-    update(e) {
-      this.input = e.target.value;
-    },
-    async createPost(isDraft, e) {
-      let curObj = this;
-      this.post.content = this.input;
-      this.post.isDraft = isDraft;
-      await PostService.createBlogPost(this.post);
-      this.$toasted.show("You greatest post was saved");
-      this.$router.push("/");
-    }
-  }
+	name: 'MarkdownPostEditor',
+	components: {
+		PrimaryButton,
+	},
+	data() {
+		return {
+			input: '# hello',
+			post: {
+				title: 'Great post',
+				content: '',
+				isDraft: true,
+			},
+		};
+	},
+	computed: {
+		compiledMarkdown() {
+			return marked(this.input, { sanitize: true });
+		},
+	},
+	methods: {
+		update(e) {
+			this.input = e.target.value;
+		},
+		async createPost(isDraft) {
+			this.post.content = this.input;
+			this.post.isDraft = isDraft;
+			await PostService.createBlogPost(this.post);
+			this.$toasted.show('You greatest post was saved');
+			this.$router.push('/');
+		},
+	},
 };
 </script>
 
@@ -90,6 +103,8 @@ $margin: 10px;
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 2rem;
+    width: 100%;
   }
 
   & .text-input__input-box {
@@ -103,13 +118,6 @@ $margin: 10px;
       border-color: dodgerblue;
       box-shadow: 0 4px 6px -6px dodgerblue;
     }
-  }
-
-  &__title-area {
-    margin-bottom: 2rem;
-    width: 100%;
-    display: flex;
-    justify-content: center;
   }
 
   &__area {
@@ -141,7 +149,7 @@ $margin: 10px;
   overflow: visible;
   border: 1px solid;
   border-radius: 5px;
-  border-color: palevioletred;
+  border-color: #aca7cb;
   width: 50%;
 
   &:focus {

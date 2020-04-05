@@ -1,0 +1,7 @@
+{
+  "extends": "stylelint-config-standard",
+  "fix": true,
+  "rules": {
+    "indentation": 2
+  }
+}
