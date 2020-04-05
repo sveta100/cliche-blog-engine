@@ -1,5 +1,5 @@
 <template>
-  <p>{{ moment(rawDate).format("MMM Do YY") }}</p>
+  <p>{{ moment(rawDate).format("MMM Do YYYY") }}</p>
 </template>
 
 <script>
