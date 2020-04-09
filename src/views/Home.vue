@@ -1,58 +1,59 @@
 <template>
-  <div class="home-container">
-    <div class="home-container__left">
-      <PostList :posts="posts" />
-    </div>
-    <div class="home-container__right">
-      <img
-        class="portrait"
-        src="../assets/images/portrait.jpg"
-      >
-
-      <div class="tags">
-        <h4>Categories</h4>
-        <ul class="tags__list">
-          <li class="tags__tag">
-            <p class="tags__content">
-              C#
-            </p>
-          </li>
-          <li class="tags__tag">
-            <p class="tags__content">
-              JS
-            </p>
-          </li>
-          <li class="tags__tag">
-            <p class="tags__content">
-              NodeJs
-            </p>
-          </li>
-          <li class="tags__tag">
-            <p class="tags__content">
-              React
-            </p>
-          </li>
-          <li class="tags__tag">
-            <p class="tags__content">
-              VueJs
-            </p>
-          </li>
-          <li class="tags__tag">
-            <p class="tags__content">
-              DevOps
-            </p>
-          </li>
-          <li class="tags__tag">
-            <p class="tags__content">
-              .Net
-            </p>
-          </li>
-          <li class="tags__tag">
-            <p class="tags__content">
-              Sass
-            </p>
-          </li>
-        </ul>
+  <div class="fl-continer">
+    <div class="fl-row">
+      <div class="fl-row__col-10">
+        <PostList :posts="posts" />
+      </div>
+      <div class="fl-row__col-2">
+        <img
+          class="portrait"
+          src="../assets/images/portrait.jpg"
+        >
+        <div class="tags">
+          <h4>Categories</h4>
+          <ul class="tags__list">
+            <li class="tags__tag">
+              <p class="tags__content">
+                C#
+              </p>
+            </li>
+            <li class="tags__tag">
+              <p class="tags__content">
+                JS
+              </p>
+            </li>
+            <li class="tags__tag">
+              <p class="tags__content">
+                NodeJs
+              </p>
+            </li>
+            <li class="tags__tag">
+              <p class="tags__content">
+                React
+              </p>
+            </li>
+            <li class="tags__tag">
+              <p class="tags__content">
+                VueJs
+              </p>
+            </li>
+            <li class="tags__tag">
+              <p class="tags__content">
+                DevOps
+              </p>
+            </li>
+            <li class="tags__tag">
+              <p class="tags__content">
+                .Net
+              </p>
+            </li>
+            <li class="tags__tag">
+              <p class="tags__content">
+                Sass
+              </p>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

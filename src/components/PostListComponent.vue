@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="posts__list">
     <PostTile
       v-for="post in posts"
       :key="post.id"
@@ -25,3 +25,12 @@ export default {
 	},
 };
 </script>
+
+<style lang="scss" scoped>
+.posts {
+  &__list {
+    display: flex;
+    flex-direction: column;
+  }
+}
+</style>

@@ -1,0 +1,49 @@
+.margin-top {
+  margin-top: 2.5rem;
+}
+
+.margin-bottom {
+  margin-bottom: 2.5rem;
+}
+
+.continer {
+  display: -ms-grid;
+  display: grid;
+  gap: 30px;
+}
+
+.row {
+  max-width: 114rem;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.row:not(:last-child) {
+  margin-bottom: 8rem;
+}
+
+.row [class*="__col-"]:not(:last-child) {
+  margin-right: 6rem;
+}
+
+.row__col-2 {
+  max-width: calc((100% - ((2 - 1) * 6rem)) / 2);
+}
+
+.row__col-3 {
+  max-width: calc((100% - ((3 - 1) * 6rem)) / 3);
+}
+
+.row__col-4 {
+  max-width: calc((100% - ((4 - 1) * 6rem)) / 4);
+}
+
+.row__col-span-2 {
+  max-width: calc(2 * ((100% - ((2 - 1) * 6rem)) / 2) + ((2 - 1) * 6rem));
+}
+
+.row__col-span-3 {
+  max-width: calc(3 * ((100% - ((3 - 1) * 6rem)) / 3) + ((3 - 1) * 6rem));
+}

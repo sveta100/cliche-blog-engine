@@ -1,0 +1,11 @@
+@mixin create-grid-mq($bp) {
+  @if ($bp == 0) {
+    @content;
+  }
+
+  @else {
+    @media screen and (min-width: $breakpoint * 1px) {
+      @content;
+    }
+  }
+}

@@ -4,14 +4,14 @@ exports.list_all_published_posts = (req, res) => {
 	Post.find({ isDraft: false }, (err, posts) => {
 		if (err)console.log(err, posts);
 		res.send(posts);
-	});
+	}).sort({ createdAt: -1 });
 };
 
 exports.list_all_posts = (req, res) => {
-	Post.find({ isDraft: false }, (err, posts) => {
-		if (err) console.error(err);
-		res.send(posts);
-	});
+	Post.find((err, posts) => {
+		if (err)console.error(err);
+		return res.send(posts);
+	}).sort({ createdAt: -1 });
 };
 
 exports.create_a_post = (req, res) => {

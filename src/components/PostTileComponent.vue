@@ -48,10 +48,11 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-  width: 100%;
+  width: 60%;
   margin: 10px;
   padding: 10px;
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
 }
 
 .card:hover {
@@ -79,11 +80,4 @@ export default {
   float: left;
 }
 
-.container {
-  padding: 2px 16px;
-  clear: both;
-  float: left;
-  width: 100%;
-  text-align: start;
-}
 </style>

@@ -18,16 +18,16 @@
       />
     </div>
 
-    <div class="editor__area">
+    <div class="editor__area row">
+      <div
+        class="editor__preview"
+        v-html="compiledMarkdown"
+      />
       <textarea
         class="textarea editor__writer"
         :value="input"
         debounce="300"
         @input="update"
-      />
-      <div
-        class="editor__preview"
-        v-html="compiledMarkdown"
       />
     </div>
     <div class="editor__buttons">

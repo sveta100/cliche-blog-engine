@@ -1,0 +1,22 @@
+.fl-continer {
+  max-width: $grid-width;
+  margin: 0 auto;
+
+  &--fluid {
+    max-width: 100%;
+    margin: 0;
+  }
+}
+
+.fl-row {
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+
+  @for $i from 1 through $grid-cols {
+    &__col-#{$i} {
+      flex-basis: calc(100% / (#{$grid-cols} / #{$i}));
+    }
+  }
+}

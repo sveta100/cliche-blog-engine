@@ -31,7 +31,7 @@ module.exports = {
 						loader: 'sass-loader',
 						options: {
 							// use `prependData` here if sass-loader version >= 8
-							data: '@import "./src/styles/main";',
+							data: '@import "./src/assets/styles/main.scss";',
 						},
 					},
 				],
