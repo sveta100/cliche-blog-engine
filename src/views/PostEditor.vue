@@ -1,5 +1,5 @@
 <template>
-  <div class="editor">
+  <div class="fl-row">
     <h3>Any great thoughts to express?</h3>
     <MarkdownPostEditor />
   </div>
@@ -16,10 +16,6 @@ export default {
 </script>
 <style lang="scss" scoped>
 .editor {
-  height: 100%;
-  width: 100%;
-  padding-top: 20px;
-  display: flex;
-  flex-direction: column;
+  padding: 10px;
 }
 </style>

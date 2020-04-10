@@ -1,6 +1,6 @@
 /* eslint-disable vue/no-v-html */
 <template>
-  <form class="editor">
+  <form class="editor fl-row">
     <div class="editor__title-area">
       <input
         v-model="post.title"
@@ -18,19 +18,26 @@
       />
     </div>
 
-    <div class="editor__area row">
+
+    <div class="fl-row">
       <div
-        class="editor__preview"
-        v-html="compiledMarkdown"
-      />
-      <textarea
-        class="textarea editor__writer"
-        :value="input"
-        debounce="300"
-        @input="update"
-      />
+        class="fl-row__col-6"
+      >
+        <div
+          class="editor__preview"
+          v-html="compiledMarkdown"
+        />
+      </div>
+      <div class="fl-row__col-6">
+        <textarea
+          class="textarea editor__writer"
+          :value="input"
+          debounce="300"
+          @input="update"
+        />
+      </div>
     </div>
-    <div class="editor__buttons">
+    <div class="editor__buttons fl-row__col-12">
       <primary-button
         :name="'Save as Draft'"
         @click="createPost(true)"
@@ -87,18 +94,6 @@ $font-size: 20px;
 $margin: 10px;
 
 .editor {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-  min-height: 400px;
-  justify-content: space-between;
-  align-items: flex-start;
-
-  &__draft-checkbox {
-    margin-left: auto;
-  }
-
   &__title-area {
     display: flex;
     flex-direction: column;
@@ -126,14 +121,9 @@ $margin: 10px;
     width: 100%;
   }
 
-  &__writer {
-    width: 50%;
-    font-size: $font-size;
-  }
-
   &__preview {
     background-color: #fcf8ff;
-    width: 50%;
+    min-height: 60vh;
   }
 
   &__buttons {
@@ -150,7 +140,7 @@ $margin: 10px;
   border: 1px solid;
   border-radius: 5px;
   border-color: #aca7cb;
-  width: 50%;
+  width: 100%;
 
   &:focus {
     outline: none;

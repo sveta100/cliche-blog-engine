@@ -1,11 +1,17 @@
 <template>
   <div id="app">
     <navigation-bar id="nav-bar" />
-    <div class="flex-container">
-      <h1 id="mainTitle">
-        In Wonderland of Programming
-      </h1>
-      <router-view />>
+    <div class="fl-container">
+      <div class="fl-row">
+        <div class="fl-row__col-10 margin-bottom-big">
+          <h1 id="mainTitle">
+            In Wonderland of Programming
+          </h1>
+        </div>
+      </div>
+      <div class="fl-row">
+        <router-view />
+      </div>
     </div>
   </div>
 </template>
@@ -19,14 +25,25 @@ export default {
 };
 </script>
 <style lang="scss">
+html {
+  font-size: 10px;
+}
+
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.6rem;
 }
 
 h1,
 h2,
 h3 {
   color: $secondary;
+  font-family: 'Comic Neue', cursive;
+}
+
+h2 {
+  font-size: 4rem;
+  font-weight: 100;
 }
 
 #app {
@@ -43,11 +60,10 @@ h3 {
 }
 
 #mainTitle {
-  font-family: "Comic Neue", cursive;
+  font-family: 'Comic Neue', cursive;
   font-size: 3em;
   clear: both;
-  font-weight: 600;
-  margin-bottom: 50px;
+  font-weight: 500;
 }
 
 .flex-container {
