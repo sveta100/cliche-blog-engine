@@ -7,7 +7,9 @@ module.exports = function setUpDevServer(app) {
 	clientConfig.entry.app = [
 		'webpack-hot-middleware/client',
 		clientConfig.entry.app,
+
 	];
+
 	clientConfig.plugins.push(
 		new webpack.HotModuleReplacementPlugin(),
 		new webpack.NoEmitOnErrorsPlugin(),

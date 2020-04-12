@@ -3,13 +3,14 @@
     <navigation-bar id="nav-bar" />
     <div class="fl-container">
       <div class="fl-row">
-        <div class="fl-row__col-10 margin-bottom-big">
+        <div class="hero-wrapper">
+          <div class="hero" />
           <h1 id="mainTitle">
-            In Wonderland of Programming
+            In "<em>Wonderland</em>" of Programming
           </h1>
         </div>
       </div>
-      <div class="fl-row">
+      <div class="margin-top-big">
         <router-view />
       </div>
     </div>
@@ -25,12 +26,19 @@ export default {
 };
 </script>
 <style lang="scss">
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 html {
   font-size: 10px;
 }
 
 body {
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Ubuntu', sans-serif;
   font-size: 1.6rem;
 }
 
@@ -38,7 +46,8 @@ h1,
 h2,
 h3 {
   color: $secondary;
-  font-family: 'Comic Neue', cursive;
+  font-family: 'VT323', monospace;
+  //font-family: 'Comic Neue', cursive;
 }
 
 h2 {
@@ -60,10 +69,40 @@ h2 {
 }
 
 #mainTitle {
-  font-family: 'Comic Neue', cursive;
-  font-size: 3em;
-  clear: both;
+  //font-family: 'Comic Neue', cursive;
+  font-size: 2.5em;
   font-weight: 500;
+  position: absolute;
+  color: white;
+  top: 40%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, -40%);
+}
+
+.hero-wrapper {
+  position: relative;
+  min-width: 114rem;
+}
+
+.hero {
+  background-image: url("./assets/images/hero.png");
+  height: 150px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50%;
+  width: 100%;
+  filter: blur(1px);
+
+  /* &::after {
+    position: absolute;
+    bottom: 0;
+    top: 0;
+    left: 0;
+    right: 0;
+    content: '';
+    background: rgba(white, 0.5);
+  } */
 }
 
 .flex-container {

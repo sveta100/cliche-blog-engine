@@ -39,12 +39,10 @@ export default {
   margin: 8px;
   padding: 5px 10px;
   color: black;
-  font-style: oblique;
   font-weight: 100;
   font-size: 20px;
-  font-family: "Comic Neue", cursive;
-
-  // font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+  font-family: 'VT323', monospace;
+  //font-family: "Comic Neue", cursive;
 
   &--active {
     color: #b0a8b9;

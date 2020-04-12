@@ -22,3 +22,20 @@ exports.create_a_post = (req, res) => {
 		res.send(post);
 	});
 };
+
+exports.get_a_post = (req, res) => {
+	const { id } = req.params;
+	Post.findById({ _id: id }, (err, post) => {
+		if (err) console.error(err);
+		console.log(`${post.title} found your great post.`);
+		res.send(post);
+	});
+};
+
+exports.delete_a_post = (req, res) => {
+	const { id } = req.params;
+	Post.deleteOne({ _id: id }, (err, post) => {
+		if (err) console.error(err);
+		res.send(post);
+	});
+};

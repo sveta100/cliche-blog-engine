@@ -1,9 +1,17 @@
 import Vue from 'vue';
 import Toasted from 'vue-toasted';
+import AsyncComputed from 'vue-async-computed';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { library } from '@fortawesome/fontawesome-svg-core';
+import { fas } from '@fortawesome/free-solid-svg-icons';
 import App from './App.vue';
 import router from './router/router';
 
+library.add(fas);
+
+Vue.use(AsyncComputed);
 Vue.use(Toasted);
+Vue.component('font-icon', FontAwesomeIcon);
 
 new Vue({
 	router, // injecting here so the whole app is aware of the router and accessible via this.$router

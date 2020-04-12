@@ -1,5 +1,5 @@
 <template>
-  <div class="fl-row">
+  <div>
     <h3>Any great thoughts to express?</h3>
     <MarkdownPostEditor />
   </div>
@@ -14,8 +14,3 @@ export default {
 	},
 };
 </script>
-<style lang="scss" scoped>
-.editor {
-  padding: 10px;
-}
-</style>

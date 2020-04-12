@@ -1,25 +1,23 @@
 /* eslint-disable vue/no-v-html */
 <template>
   <form class="editor fl-row">
-    <div class="editor__title-area">
+    <div class="editor__header">
       <input
         v-model="post.title"
         type="text"
         placeholder="Blog post title:"
-        class="text-input__input-box margin-bottom"
+        class="editor__title-input text-input margin-bottom"
         title="post-title"
       >
       <textarea
         v-model="post.summary"
         type="text"
         placeholder="Blog post summary:"
-        class="textarea"
+        class="editor__header-textarea textarea"
         title="post-title"
       />
     </div>
-
-
-    <div class="fl-row">
+    <div class="fl-row editor__content margin-bottom ">
       <div
         class="fl-row__col-6"
       >
@@ -90,11 +88,9 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-$font-size: 20px;
-$margin: 10px;
 
 .editor {
-  &__title-area {
+  &__header {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -102,7 +98,17 @@ $margin: 10px;
     width: 100%;
   }
 
-  & .text-input__input-box {
+  &__content {
+    min-height: 60vh;
+  }
+
+  &__header-textarea {
+    width: 60rem;
+    height: 100px;
+    padding: 10px;
+  }
+
+  & .text-input {
     padding: 10px;
     min-width: 400px;
     border-width: 0 0 1px 0;
@@ -110,20 +116,28 @@ $margin: 10px;
     outline: none;
 
     &:focus {
-      border-color: dodgerblue;
-      box-shadow: 0 4px 6px -6px dodgerblue;
+      border-color: $tertiary;
+      box-shadow: 0 4px 6px -6px $tertiary;
     }
   }
 
   &__area {
     display: flex;
-    min-height: 80vh;
+    height: 100%;
     width: 100%;
   }
 
   &__preview {
     background-color: #fcf8ff;
-    min-height: 60vh;
+    height: 100%;
+    padding: 10px;
+    word-break: break-word;
+  }
+
+  &__writer {
+    width: 96%;
+    padding: 10px;
+    height: 100%;
   }
 
   &__buttons {
@@ -135,12 +149,10 @@ $margin: 10px;
 
 .textarea {
   min-height: 100px;
-  padding: 0.5rem 1rem;
   overflow: visible;
   border: 1px solid;
   border-radius: 5px;
   border-color: #aca7cb;
-  width: 100%;
 
   &:focus {
     outline: none;

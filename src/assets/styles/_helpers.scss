@@ -9,3 +9,34 @@
 .margin-bottom-big {
   margin-bottom: 5rem;
 }
+
+.margin-top-big {
+  margin-top: 5rem;
+}
+
+.mr-xs {
+  margin-right: 1rem;
+}
+
+.pb-md {
+  padding-bottom: 1rem;
+}
+
+.pb-lg {
+  padding-bottom: 2.5rem;
+}
+
+// flex
+.justify-sb {
+  justify-content: space-between;
+}
+
+.fl-grow-1 {
+  flex: 1;
+}
+
+// Color and background
+
+.cc-lighPur {
+  color: $tertiary;
+}

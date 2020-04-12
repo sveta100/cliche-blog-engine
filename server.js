@@ -4,6 +4,7 @@ import cors from 'cors';
 import mongoose from 'mongoose';
 import path from 'path';
 import fs from 'fs';
+import history from 'connect-history-api-fallback';
 import dbconfig from './config/db.config';
 import devServer from './build/dev-server';
 import routes from './routes';
@@ -15,10 +16,12 @@ app.use(bodyParser.json());
 
 app.use(cors());
 
+
 const indexHTML = (() => fs.readFileSync(
 	path.resolve(__dirname, './public/index.html'),
 	'utf-8',
 ))();
+
 
 // Select which directories or files under public can be served to users
 app.use('/dist', express.static(path.resolve(__dirname, './dist')));
@@ -32,6 +35,9 @@ app.get('*', (req, res) => {
 	res.write(indexHTML);
 	res.end();
 });
+app.use(history({
+	verbose: true,
+}));
 
 app.listen(port, () => {
 	console.log(`listening on port ${port}`);
