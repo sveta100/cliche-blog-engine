@@ -14,15 +14,17 @@
         <router-view />
       </div>
     </div>
+    <ActionModal />
   </div>
 </template>
 
 <script>
 import NavigationBar from './components/NavigationComponent.vue';
+import ActionModal from './components/common/ActionModalComponent.vue';
 
 export default {
 	name: 'App',
-	components: { NavigationBar },
+	components: { NavigationBar, ActionModal },
 };
 </script>
 <style lang="scss">
@@ -56,11 +58,11 @@ h2 {
 }
 
 #app {
+  position: relative;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: $primary;
-  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;

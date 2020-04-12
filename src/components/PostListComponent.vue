@@ -10,6 +10,7 @@
 
 <script>
 import PostTile from './PostTileComponent.vue';
+import PostService from '../../services/PostService';
 
 export default {
 	name: 'PostList',
@@ -22,6 +23,21 @@ export default {
 			type: Array,
 			default: () => [],
 		},
+	},
+	created() {
+		this.$root.$on('deletePost', async (postId) => {
+			await this.deletePost(postId);
+		});
+	},
+	methods: {
+		async deletePost(postId) {
+			await PostService.deleteBlogPost(postId);
+			this.$toasted.show('The blog post deleted');
+			// eslint-disable-next-line no-underscore-dangle
+			const deletedPost =	this.posts.find((post) => post._id === postId);
+			this.posts.splice(deletedPost, 1);
+		},
+
 	},
 };
 </script>

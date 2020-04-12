@@ -38,7 +38,7 @@ import marked from 'marked';
 import DateFormat from './common/DateFormatComponent.vue';
 import PostDivider from './common/PostDivider.vue';
 import IconButton from './common/IconButtonComponent.vue';
-import PostService from '../../services/PostService';
+
 
 export default {
 	name: 'PostTile',
@@ -55,6 +55,7 @@ export default {
 	},
 	computed: {
 		compiledMarkdown() {
+			if (!this.post.content) return '';
 			return marked(this.post.content, { sanitize: true });
 		},
 	},
@@ -62,9 +63,13 @@ export default {
 		viewPost(postId) {
 			this.$router.push({ name: 'Blog post', params: { postId } });
 		},
-		async deletePost(postId) {
-			await PostService.deleteBlogPost(postId);
-			this.$toasted.show('The blog post deleted');
+		deletePost(postId) {
+			this.$root.$emit('showModal', () => {
+				this.$root.$emit('deletePost', postId);
+			});
+		},
+		editPost(postId) {
+			this.$router.push({ name: 'Blog post', params: { postId } });
 		},
 	},
 };
