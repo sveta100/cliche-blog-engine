@@ -19,8 +19,13 @@ const routes = [
 		component: About,
 	},
 	{
-		path: '/addAmazingPost',
-		name: 'New post',
+		path: '/post-editor',
+		name: 'Post Editor',
+		component: PostEditor,
+	},
+	{
+		path: '/edit-post/:postId',
+		name: 'Edit post',
 		component: PostEditor,
 	},
 	{

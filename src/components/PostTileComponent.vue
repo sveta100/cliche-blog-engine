@@ -15,7 +15,10 @@
             class="mr-xs"
             @click="deletePost(post._id)"
           />
-          <IconButton :icon="'pen'" />
+          <IconButton
+            :icon="'pen'"
+            @click="editPost(post._id)"
+          />
         </div>
       </div>
 
@@ -69,7 +72,7 @@ export default {
 			});
 		},
 		editPost(postId) {
-			this.$router.push({ name: 'Blog post', params: { postId } });
+			this.$router.push({ name: 'Edit post', params: { postId } });
 		},
 	},
 };

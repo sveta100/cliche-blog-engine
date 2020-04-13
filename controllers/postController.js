@@ -14,13 +14,15 @@ exports.list_all_posts = (req, res) => {
 	}).sort({ createdAt: -1 });
 };
 
-exports.create_a_post = (req, res) => {
-	const newPost = new Post(req.body);
-	newPost.save((err, post) => {
-		if (err) console.error(err);
-		console.log(`${post.title} added your great post to the collection.`);
-		res.send(post);
-	});
+exports.add_or_update_post = (req, res) => {
+	const postModel = new Post(req.body);
+	// eslint-disable-next-line no-underscore-dangle
+	Post.findOneAndUpdate({ _id: postModel._id }, postModel, { new: true, upsert: true },
+		(err, post) => {
+			if (err) console.error(err);
+			console.log(`${post.title} added your great post to the collection.`);
+			res.send(post);
+		});
 };
 
 exports.get_a_post = (req, res) => {

@@ -17,9 +17,9 @@
     <router-link
       active-class="router-link router-link--active"
       class="router-link"
-      to="/addAmazingPost"
+      to="/post-editor"
     >
-      New Post
+      Post Editor
     </router-link>
   </div>
 </template>

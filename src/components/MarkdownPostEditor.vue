@@ -57,19 +57,32 @@ export default {
 	components: {
 		PrimaryButton,
 	},
+	props: {
+		blogPost: {
+			type: Object,
+			default: () => {},
+		},
+	},
 	data() {
 		return {
-			input: '# hello',
+			input: this.blogPost.content,
 			post: {
-				title: 'Great post',
-				content: '',
-				isDraft: true,
+				title: this.blogPost.title,
+				content: this.blogPost.content,
+				isDraft: this.blogPost.isDraft,
 			},
+			postId: this.$route.params.postId,
 		};
 	},
 	computed: {
 		compiledMarkdown() {
 			return marked(this.input, { sanitize: true });
+		},
+	},
+	watch: {
+		blogPost(newVal) {
+			this.input = newVal.content;
+			this.post = { ...newVal };
 		},
 	},
 	methods: {
@@ -79,8 +92,13 @@ export default {
 		async createPost(isDraft) {
 			this.post.content = this.input;
 			this.post.isDraft = isDraft;
-			await PostService.createBlogPost(this.post);
-			this.$toasted.show('You greatest post was saved');
+			if (this.postId) {
+				this.$toasted.show('You greatest post was updated');
+			} else {
+				this.$toasted.show('You greatest post was saved');
+			}
+			await PostService.addOrUpdatePost(this.post);
+
 			this.$router.push('/');
 		},
 	},

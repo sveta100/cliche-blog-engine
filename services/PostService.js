@@ -22,11 +22,10 @@ export default {
 			});
 		return res.data;
 	},
-	async createBlogPost(post) {
-		console.log(post);
+	async addOrUpdatePost(post) {
 		const res = axios.post('http://localhost:4000/api/posts', post)
 			.catch((error) => {
-				console.log(`${error} error while creating a post`);
+				console.log(`${error} error while updating a post`);
 			});
 		return res.data;
 	},

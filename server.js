@@ -46,6 +46,7 @@ app.listen(port, () => {
 mongoose.connect(dbconfig.url, {
 	useNewUrlParser: true,
 	useUnifiedTopology: true,
+	useFindAndModify: false,
 });
 
 const db = mongoose.connection;

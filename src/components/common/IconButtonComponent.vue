@@ -31,5 +31,9 @@ export default {
 <style lang="scss">
 .btn-icon {
   border: none;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 </style>
