@@ -2,17 +2,17 @@
   <div class="fl-row">
     <div class="post">
       <div class="post__header pb-md">
-        <h2 @click="viewPost(post._id)">
+        <h2>
           {{ post.title }}
         </h2>
         <div class="post__header-date">
           <date-format :raw-date="post.createdAt" />
         </div>
       </div>
-      <div class="post__content-wrapper margin-bottom-big">
-        <p
+      <div class="post__content-wrapper mb-l">
+        <MarkdownToHtml
+          :markdown="post.content"
           class="card__content"
-          v-html="compiledMarkdown"
         />
       </div>
     </div>
@@ -24,6 +24,7 @@
 import marked from 'marked';
 import PostService from '../../services/PostService';
 import DateFormat from '../components/common/DateFormatComponent.vue';
+import MarkdownToHtml from '../components/MarkdownToHtmlComponent.vue';
 
 
 export default {
@@ -31,6 +32,7 @@ export default {
 	name: 'BlogPost',
 	components: {
 		DateFormat,
+		MarkdownToHtml,
 	},
 	data() {
 		return {

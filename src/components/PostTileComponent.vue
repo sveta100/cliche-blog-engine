@@ -1,6 +1,6 @@
 /* eslint-disable vue/no-v-html */
 <template>
-  <div class="card margin-bottom">
+  <div class="card mb-md">
     <div class="card__header pb-md">
       <div class="fl-row justify-sb">
         <h2
@@ -26,10 +26,10 @@
         <date-format :raw-date="post.createdAt" />
       </div>
     </div>
-    <div class="card__content-wrapper margin-bottom-big">
-      <div
+    <div class="card__content-wrapper mb-l ">
+      <MarkdownToHtml
+        :markdown="post.content"
         class="card__content"
-        v-html="compiledMarkdown"
       />
       <h5>Read more...</h5>
     </div>
@@ -41,6 +41,7 @@ import marked from 'marked';
 import DateFormat from './common/DateFormatComponent.vue';
 import PostDivider from './common/PostDivider.vue';
 import IconButton from './common/IconButtonComponent.vue';
+import MarkdownToHtml from './MarkdownToHtmlComponent.vue';
 
 
 export default {
@@ -49,6 +50,7 @@ export default {
 		DateFormat,
 		PostDivider,
 		IconButton,
+		MarkdownToHtml,
 	},
 	props: {
 		post: {
