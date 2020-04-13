@@ -27,7 +27,7 @@
       </div>
     </div>
     <div class="card__content-wrapper margin-bottom-big">
-      <p
+      <div
         class="card__content"
         v-html="compiledMarkdown"
       />
@@ -59,7 +59,7 @@ export default {
 	computed: {
 		compiledMarkdown() {
 			if (!this.post.content) return '';
-			return marked(this.post.content, { sanitize: true });
+			return marked(this.post.content);
 		},
 	},
 	methods: {

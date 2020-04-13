@@ -3,7 +3,7 @@
   <form class="editor fl-row">
     <div class="editor__header">
       <input
-        v-model="post.title"
+        v-model.lazy="post.title"
         type="text"
         placeholder="Blog post title:"
         class="editor__title-input text-input margin-bottom"
@@ -49,6 +49,7 @@
 </template>
 <script>
 import marked from 'marked';
+import DOMPurify from 'dompurify';
 import PostService from '../../services/PostService';
 import PrimaryButton from './common/ButtonComponent.vue';
 
@@ -76,7 +77,7 @@ export default {
 	},
 	computed: {
 		compiledMarkdown() {
-			return marked(this.input, { sanitize: true });
+			return marked(this.input);
 		},
 	},
 	watch: {
@@ -87,10 +88,11 @@ export default {
 	},
 	methods: {
 		update(e) {
-			this.input = e.target.value;
+			this.input = DOMPurify.sanitize(e.target.value);
 		},
 		async createPost(isDraft) {
 			this.post.content = this.input;
+			console.log(this.post.content);
 			this.post.isDraft = isDraft;
 			if (this.postId) {
 				this.$toasted.show('You greatest post was updated');
