@@ -1,5 +1,8 @@
 export default {
-	get: jest.fn(() => Promise.resolve({
+	get: () => Promise.resolve({
 		data: [{ title: 'first post' }, { title: 'second post' }],
-	})),
+	}),
+	deleteOne: () => Promise.resolve({
+		data: [{ title: 'first post' }, { title: 'second post' }],
+	}),
 };

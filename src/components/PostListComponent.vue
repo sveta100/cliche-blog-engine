@@ -19,9 +19,19 @@ export default {
 		PostTile,
 	},
 	props: {
-		posts: {
+		items: {
 			type: Array,
 			default: () => [],
+		},
+	},
+	data() {
+		return {
+			posts: [],
+		};
+	},
+	watch: {
+		items(newVal) {
+			this.posts = newVal;
 		},
 	},
 	created() {
@@ -33,9 +43,11 @@ export default {
 		async deletePost(postId) {
 			await PostService.deleteBlogPost(postId);
 			this.$toasted.show('The blog post deleted');
+			this.deletePostFromList(postId);
+		},
+		deletePostFromList(postId) {
 			// eslint-disable-next-line no-underscore-dangle
-			const deletedPost =	this.posts.find((post) => post._id === postId);
-			this.posts.splice(deletedPost, 1);
+			this.posts = this.posts.filter((post) => post._id !== postId);
 		},
 
 	},

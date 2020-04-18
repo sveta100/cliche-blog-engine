@@ -3,7 +3,7 @@
     <div class="fl-row__col-10">
       <PostList
         class="post-list"
-        :posts="posts"
+        :items="posts"
       />
     </div>
     <div class="fl-row__col-2">
