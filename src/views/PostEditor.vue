@@ -14,8 +14,13 @@
           v-model="post.summary"
           type="text"
           placeholder="Blog post summary:"
-          class="editor__header-textarea textarea"
+          class="editor__header-textarea textarea mb-md"
           title="post-title"
+        />
+        <MultiselectBff
+          :options="tags"
+          :preselected="initialTags"
+          @update-selected="updateTags"
         />
       </div>
       <div class="fl-row editor__content mb-md">
@@ -50,7 +55,9 @@
 import TextAreaEditor from '../components/common/TextAreaEditorComponent.vue';
 import MarkdownToHtml from '../components/MarkdownToHtmlComponent.vue';
 import PostService from '../../services/PostService';
+import TagService from '../../services/TagService';
 import PrimaryButton from '../components/common/ButtonComponent.vue';
+import MultiselectBff from '../components/common/MultiselectBffComponent.vue';
 
 export default {
 	name: 'PostEditor',
@@ -58,13 +65,17 @@ export default {
 		TextAreaEditor,
 		PrimaryButton,
 		MarkdownToHtml,
+		MultiselectBff,
 	},
 	data() {
 		return {
 			post: {
 				title: '',
 				content: '# hello',
+				tags: [],
 			},
+			tags: [],
+			initialTags: [],
 			postId: this.$route.params.postId,
 		};
 	},
@@ -73,8 +84,19 @@ export default {
 	},
 	methods: {
 		async init() {
+			if (this.postId) {
+				await this.initPost();
+			}
+			await this.initTags();
+		},
+		async initPost() {
 			const post = await PostService.getPost(this.postId);
+			this.initialTags = post.tags.slice();
 			this.$set(this, 'post', post);
+		},
+		async initTags() {
+			const tags = await TagService.getTags();
+			this.$set(this, 'tags', tags);
 		},
 		async createPost(isDraft) {
 			this.post.isDraft = isDraft;
@@ -83,9 +105,13 @@ export default {
 			} else {
 				this.$toasted.show('You greatest post was saved');
 			}
+			debugger;
 			await PostService.addOrUpdatePost(this.post);
 
 			this.$router.push('/');
+		},
+		updateTags(updatedTags) {
+			this.post.tags = updatedTags;
 		},
 	},
 };

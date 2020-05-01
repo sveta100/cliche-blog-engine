@@ -18,6 +18,10 @@
   margin-right: 1rem;
 }
 
+.ml-xs {
+  margin-left: 1rem;
+}
+
 .pb-md {
   padding-bottom: 1rem;
 }
@@ -39,4 +43,18 @@
 
 .cc-lighPur {
   color: $tertiary;
+}
+
+.cc-white {
+  color: white;
+}
+
+//align
+.left {
+  text-align: left;
+}
+
+//general
+.cursor-pointer {
+  cursor: pointer;
 }

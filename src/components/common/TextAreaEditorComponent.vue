@@ -31,8 +31,8 @@ export default {
 	},
 	methods: {
 		update(e) {
-			this.outputText = DOMPurify.sanitize(e.target.value);
-			this.$emit('update:content', DOMPurify.sanitize(e.target.value));
+			this.outputText = DOMPurify.sanitize(e.target.value, { USE_PROFILES: { html: true } });
+			this.$emit('update:content', this.outputText);
 		},
 	},
 };

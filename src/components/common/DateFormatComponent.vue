@@ -1,5 +1,10 @@
 <template>
-  <p>{{ moment(rawDate).format("MMM Do YYYY") }}</p>
+  <div class="fl-row">
+    <font-icon
+      icon="calendar"
+    />
+    <span class="ml-xs"> {{ moment(rawDate).format("MMM Do YYYY") }} </span>
+  </div>
 </template>
 
 <script>

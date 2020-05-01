@@ -4,7 +4,7 @@ exports.list_all_published_posts = (req, res) => {
 	Post.find({ isDraft: false }, (err, posts) => {
 		if (err)console.log(err, posts);
 		res.send(posts);
-	}).sort({ createdAt: -1 });
+	}).populate('tags').sort({ createdAt: -1 });
 };
 
 exports.list_all_posts = (req, res) => {
@@ -16,8 +16,10 @@ exports.list_all_posts = (req, res) => {
 
 exports.add_or_update_post = (req, res) => {
 	const postModel = new Post(req.body);
+	debugger;
 	// eslint-disable-next-line no-underscore-dangle
-	Post.findOneAndUpdate({ _id: postModel._id }, postModel, { new: true, upsert: true },
+	Post.findOneAndUpdate({ _id: postModel._id },
+		postModel, { new: true, upsert: true },
 		(err, post) => {
 			if (err) console.error(err);
 			console.log(`${post.title} added your great post to the collection.`);

@@ -87,6 +87,8 @@ export default {
   flex-direction: column;
 
   &__header {
+    align-items: flex-start;
+
     &:hover {
       cursor: pointer;
     }
