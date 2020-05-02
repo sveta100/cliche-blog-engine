@@ -8,8 +8,6 @@
 </template>
 <script>
 
-import DOMPurify from 'dompurify';
-
 export default {
 	name: 'TextAreaEditor',
 	props: {
@@ -31,7 +29,8 @@ export default {
 	},
 	methods: {
 		update(e) {
-			this.outputText = DOMPurify.sanitize(e.target.value, { USE_PROFILES: { html: true } });
+			this.outputText = e.target.value;
+			console.log(this.outputText);
 			this.$emit('update:content', this.outputText);
 		},
 	},
@@ -50,6 +49,8 @@ export default {
   &:focus {
     outline: none;
     border-width: 2px;
+    font-size: 1.8rem;
+    line-height: 1.8;
   }
 }
 </style>

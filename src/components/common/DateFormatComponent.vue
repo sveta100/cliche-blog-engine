@@ -1,5 +1,5 @@
 <template>
-  <div class="fl-row">
+  <div class="fl-row cc-lighPur align-baseline">
     <font-icon
       icon="calendar"
     />

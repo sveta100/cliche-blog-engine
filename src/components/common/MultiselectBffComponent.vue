@@ -148,7 +148,7 @@ export default {
 				this.selectedOptions.push(selectedOpt);
 				this.emptyInput();
 				this.filterSelectedOut();
-				debugger;
+
 				this.updateParent();
 			}
 		},
@@ -157,7 +157,7 @@ export default {
 		},
 		onKeywordChange(e) {
 			if (!e.target.value) { this.filterSelectedOut(); } else {
-				this.filtered = this.options.filter((i) => this.searchedOption(i));
+				this.filtered = this.filtered.filter((i) => this.searchedOption(i));
 			}
 		},
 		removeFromSelected(id) {
@@ -171,6 +171,7 @@ export default {
 		},
 		filterSelectedOut() {
 			this.filtered = this.options.filter((i) => !this.selectedOptions.includes(i));
+			debugger;
 		},
 		searchedOption(option) {
 			return this.keyword !== '' && option.name.toLowerCase().startsWith(this.keyword.toLowerCase());

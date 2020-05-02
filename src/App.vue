@@ -1,30 +1,30 @@
 <template>
   <div id="app">
     <navigation-bar id="nav-bar" />
+    <div class="hero-wrapper mb-lg">
+      <div class="hero" />
+      <h1 id="mainTitle">
+        In "<em>Wonderland</em>" of Programming
+      </h1>
+    </div>
     <div class="fl-container">
-      <div class="fl-row">
-        <div class="hero-wrapper">
-          <div class="hero" />
-          <h1 id="mainTitle">
-            In "<em>Wonderland</em>" of Programming
-          </h1>
-        </div>
-      </div>
-      <div class="margin-top-big">
+      <div class="mt-lg">
         <router-view />
       </div>
     </div>
+    <Footer />
     <ActionModal />
   </div>
 </template>
 
 <script>
 import NavigationBar from './components/NavigationComponent.vue';
+import Footer from './components/FooterComponent.vue';
 import ActionModal from './components/common/ActionModalComponent.vue';
 
 export default {
 	name: 'App',
-	components: { NavigationBar, ActionModal },
+	components: { NavigationBar, ActionModal, Footer },
 };
 </script>
 <style lang="scss">
@@ -39,17 +39,24 @@ html {
   font-size: 10px;
 }
 
-body {
-  font-family: 'Ubuntu', sans-serif;
-  font-size: 1.6rem;
+body,
+input,
+textarea {
+  font-size: 1.8rem;
+  font-family: 'Montserrat', sans-serif;
+  line-height: 1.8;
 }
 
 h1,
 h2,
 h3 {
   color: $secondary;
-  font-family: 'VT323', monospace;
-  //font-family: 'Comic Neue', cursive;
+}
+
+h1 {
+  font-size: 5rem;
+  font-weight: 100;
+  font-family: 'Knewave', cursive;
 }
 
 h2 {
@@ -68,6 +75,7 @@ h2 {
   align-items: center;
   margin-right: auto;
   margin-left: auto;
+  font-size: 1.8rem;
 }
 
 #mainTitle {
@@ -84,27 +92,17 @@ h2 {
 
 .hero-wrapper {
   position: relative;
-  min-width: 114rem;
+  width: 100%;
 }
 
 .hero {
   background-image: url("./assets/images/hero.png");
-  height: 150px;
+  height: 300px;
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 50%;
   width: 100%;
-  filter: blur(1px);
-
-  /* &::after {
-    position: absolute;
-    bottom: 0;
-    top: 0;
-    left: 0;
-    right: 0;
-    content: '';
-    background: rgba(white, 0.5);
-  } */
+  filter: blur(2px);
 }
 
 .flex-container {
@@ -113,13 +111,15 @@ h2 {
   flex-direction: column;
 }
 
-.column-one {
-  width: 70%;
-  float: left;
-}
+pre {
+  padding: 10px;
+  margin: 3rem 0;
+  background: black;
+  border-radius: 10px;
+  overflow-x: auto;
 
-.column-two {
-  width: 20%;
-  float: right;
+  & code {
+    text-align: center;
+  }
 }
 </style>

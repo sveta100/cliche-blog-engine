@@ -1,14 +1,12 @@
 <template>
   <div class="tags">
-    <h4 class="mb-md">
-      Categories
-    </h4>
     <div class="tags__list">
       <Tag
         v-for="tag in tags"
         :key="tag.id"
         class="tags__list"
         :tag="tag"
+        :with-background="withBackground"
       />
     </div>
   </div>
@@ -16,13 +14,21 @@
 
 <script>
 import Tag from './Tag.vue';
-import TagService from '../../services/TagService';
 
 export default {
 	name: 'TagList',
-
 	components: {
 		Tag,
+	},
+	props: {
+		options: {
+			type: Array,
+			default: () => [],
+		},
+		withBackground: {
+			type: Boolean,
+			default: true,
+		},
 	},
 	data() {
 		return {
@@ -30,23 +36,15 @@ export default {
 		};
 	},
 	watch: {
-		tags(newVal) {
-			this.posts = newVal;
-		},
-	},
-	async created() {
-		await this.getTags();
-	},
-	methods: {
-		async getTags() {
-			const tags = await TagService.getTags();
-			this.$set(this, 'tags', tags);
+		options(newVal) {
+			this.tags = newVal;
 		},
 	},
 };
 </script>
 
 <style lang="scss" scoped>
+
 .tags {
   display: flex;
   flex-direction: column;

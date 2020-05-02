@@ -12,7 +12,10 @@
           class="portrait mb-md"
           src="../assets/images/portrait.jpg"
         >
-        <TagsList />
+        <h4 class="mb-md">
+          Categories
+        </h4>
+        <TagsList :options="tags" />
       </section>
     </div>
   </div>
@@ -21,6 +24,7 @@
 import PostService from '../../services/PostService';
 import PostList from '../components/PostListComponent.vue';
 import TagsList from '../components/TagsListComponent.vue';
+import TagService from '../../services/TagService';
 
 export default {
 	name: 'Home',
@@ -31,6 +35,7 @@ export default {
 	data() {
 		return {
 			posts: [],
+			tags: [],
 		};
 	},
 	created() {
@@ -38,8 +43,15 @@ export default {
 	},
 	methods: {
 		async init() {
-			PostService.getPublishedPosts().then((posts) => {
-				console.log(this);
+			await	this.getPosts();
+			await	this.getTags();
+		},
+		async getTags() {
+			const tags = await TagService.getTags();
+			this.$set(this, 'tags', tags);
+		},
+		async getPosts() {
+			await PostService.getPublishedPosts().then((posts) => {
 				this.$set(this, 'posts', posts);
 			});
 		},

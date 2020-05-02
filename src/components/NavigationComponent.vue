@@ -1,21 +1,21 @@
 <template>
   <div id="nav-bar">
     <router-link
-      active-class="router-link router-link--active"
+      active-class="router-link "
       class="router-link"
       to="/"
     >
-      Home
+      Articles
     </router-link>|
     <router-link
-      active-class="router-link router-link--active"
+      active-class="router-link "
       class="router-link"
       to="/about"
     >
       About
     </router-link>|
     <router-link
-      active-class="router-link router-link--active"
+      active-class="router-link "
       class="router-link"
       to="/post-editor"
     >
@@ -31,7 +31,7 @@ export default {
 <style lang="scss">
 #nav-bar {
   align-self: flex-end;
-  height: 50px;
+  padding: 10px 20px;
 }
 
 .router-link {
@@ -41,11 +41,9 @@ export default {
   color: black;
   font-weight: 100;
   font-size: 20px;
-  font-family: 'VT323', monospace;
-  //font-family: "Comic Neue", cursive;
+}
 
-  &--active {
-    color: #b0a8b9;
-  }
+.router-link-exact-active {
+  color: #b0a8b9;
 }
 </style>

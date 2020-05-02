@@ -2,17 +2,28 @@
   <div class="fl-row">
     <div class="post">
       <div class="post__header pb-md">
-        <h2>
+        <h1 class="mb-md">
           {{ post.title }}
-        </h2>
+        </h1>
         <div class="post__header-date">
-          <date-format :raw-date="post.createdAt" />
+          <date-format
+            :raw-date="post.createdAt"
+            class="justify-center"
+          />
         </div>
       </div>
-      <div class="post__content-wrapper mb-l">
+      <div class="post__content-wrapper mb-lg">
         <MarkdownToHtml
           :markdown="post.content"
           class="card__content"
+        />
+      </div>
+      <div
+        class="justify-center mb-md"
+      >
+        <TagList
+          :options="post.tags"
+          :with-background="false"
         />
       </div>
     </div>
@@ -25,6 +36,7 @@ import marked from 'marked';
 import PostService from '../../services/PostService';
 import DateFormat from '../components/common/DateFormatComponent.vue';
 import MarkdownToHtml from '../components/MarkdownToHtmlComponent.vue';
+import TagList from '../components/TagsListComponent.vue';
 
 
 export default {
@@ -33,6 +45,7 @@ export default {
 	components: {
 		DateFormat,
 		MarkdownToHtml,
+		TagList,
 	},
 	data() {
 		return {

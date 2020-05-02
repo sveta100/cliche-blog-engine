@@ -1,16 +1,16 @@
 .margin-top {
-  margin-top: 2.5rem;
+  margin-top: 3rem;
 }
 
 .mb-md {
-  margin-bottom: 2.5rem;
+  margin-bottom: 3rem;
 }
 
-.mb-l {
+.mb-lg {
   margin-bottom: 5rem;
 }
 
-.margin-top-big {
+.mt-lg {
   margin-top: 5rem;
 }
 
@@ -33,6 +33,14 @@
 // flex
 .justify-sb {
   justify-content: space-between;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.align-baseline {
+  align-items: baseline;
 }
 
 .fl-grow-1 {

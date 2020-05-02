@@ -2,13 +2,13 @@
 <template>
   <div class="card mb-md">
     <div class="card__header pb-md">
-      <div class="fl-row justify-sb">
-        <h2
+      <div class="fl-row justify-sb align-baseline">
+        <h1
           class="fl-grow-1"
           @click="viewPost(post._id)"
         >
           {{ post.title }}
-        </h2>
+        </h1>
         <div class="card__actions">
           <IconButton
             :icon="'trash'"
@@ -21,19 +21,29 @@
           />
         </div>
       </div>
-
-      <div class="card__header-date">
-        <date-format :raw-date="post.createdAt" />
+      <div class="card__subheader">
+        <div class="card__header-date">
+          <date-format
+            :raw-date="post.createdAt"
+            class="justify-center"
+          />
+        </div>
       </div>
     </div>
-    <div class="card__content-wrapper mb-l ">
+    <div class="card__content-wrapper">
       <MarkdownToHtml
         :markdown="post.content"
         class="card__content"
       />
-      <h5>Read more...</h5>
     </div>
-    <PostDivider :text="post.title" />
+    <TagsList
+      :options="post.tags"
+      :with-background="false"
+    />
+    <PostDivider
+      class="mb-lg mt-lg"
+      :text="post.title"
+    />
   </div>
 </template>
 <script>
@@ -42,6 +52,7 @@ import DateFormat from './common/DateFormatComponent.vue';
 import PostDivider from './common/PostDivider.vue';
 import IconButton from './common/IconButtonComponent.vue';
 import MarkdownToHtml from './MarkdownToHtmlComponent.vue';
+import TagsList from './TagsListComponent.vue';
 
 
 export default {
@@ -51,6 +62,7 @@ export default {
 		PostDivider,
 		IconButton,
 		MarkdownToHtml,
+		TagsList,
 	},
 	props: {
 		post: {
@@ -86,6 +98,10 @@ export default {
   display: flex;
   flex-direction: column;
 
+  &__header-date {
+    flex-grow: 1;
+  }
+
   &__header {
     align-items: flex-start;
 
@@ -97,6 +113,11 @@ export default {
   &__content {
     text-align: justify;
     padding: 30px 0;
+  }
+
+  &__subheader {
+    display: flex;
+    padding: 15px 0;
   }
 }
 

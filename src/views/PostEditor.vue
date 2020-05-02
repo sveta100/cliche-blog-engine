@@ -80,7 +80,7 @@ export default {
 		};
 	},
 	created() {
-		if (this.postId) { this.init(); }
+		this.init();
 	},
 	methods: {
 		async init() {
@@ -91,11 +91,13 @@ export default {
 		},
 		async initPost() {
 			const post = await PostService.getPost(this.postId);
-			this.initialTags = post.tags.slice();
+			// eslint-disable-next-line no-underscore-dangle
+			this.initialTags = post.tags.map((i) => i._id).slice();
 			this.$set(this, 'post', post);
 		},
 		async initTags() {
 			const tags = await TagService.getTags();
+
 			this.$set(this, 'tags', tags);
 		},
 		async createPost(isDraft) {
@@ -105,7 +107,7 @@ export default {
 			} else {
 				this.$toasted.show('You greatest post was saved');
 			}
-			debugger;
+
 			await PostService.addOrUpdatePost(this.post);
 
 			this.$router.push('/');
