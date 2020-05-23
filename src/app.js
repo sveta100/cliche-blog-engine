@@ -4,7 +4,6 @@ import AsyncComputed from 'vue-async-computed';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-import VueHighlightJS from 'vue-highlightjs';
 import App from './App.vue';
 import router from './router/router';
 import '../node_modules/prismjs/themes/prism.css';
@@ -14,7 +13,6 @@ library.add(fas);
 
 Vue.use(AsyncComputed);
 Vue.use(Toasted);
-Vue.use(VueHighlightJS);
 Vue.component('FontIcon', FontAwesomeIcon);
 
 new Vue({
