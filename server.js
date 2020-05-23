@@ -15,13 +15,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(cors());
-
-
-const indexHTML = (() => fs.readFileSync(
-	path.resolve(__dirname, './public/index.html'),
-	'utf-8',
-))();
-
+const indexHTML = (() => fs.readFileSync(path.resolve(__dirname, './public/index.html'), 'utf-8'))();
 
 // Select which directories or files under public can be served to users
 app.use('/dist', express.static(path.resolve(__dirname, './dist')));
@@ -32,25 +26,28 @@ devServer(app);
 const port = process.env.PORT || 4000;
 
 app.get('*', (req, res) => {
-	res.write(indexHTML);
-	res.end();
+  res.write(indexHTML);
+  res.end();
 });
-app.use(history({
-	verbose: true,
-}));
+
+app.use(
+  history({
+    verbose: true,
+  }),
+);
 
 app.listen(port, () => {
-	console.log(`listening on port ${port}`);
+  console.log(`listening on port ${port}`);
 });
 
 mongoose.connect(dbconfig.url, {
-	useNewUrlParser: true,
-	useUnifiedTopology: true,
-	useFindAndModify: false,
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+  useFindAndModify: false,
 });
 
 const db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error: '));
 db.on('open', () => {
-	console.log('Connected to the db');
+  console.log('Connected to the db');
 });

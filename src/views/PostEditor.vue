@@ -1,6 +1,8 @@
 <template>
   <div>
-    <h3>Any great thoughts to express?</h3>
+    <h3 class="mb-md">
+      Any great thoughts to express?
+    </h3>
     <form class="editor fl-row mb-md">
       <div class="editor__header">
         <input
@@ -24,9 +26,7 @@
         />
       </div>
       <div class="fl-row editor__content mb-md">
-        <div
-          class="fl-row__col-6"
-        >
+        <div class="fl-row__col-6">
           <MarkdownToHtml
             :markdown="post.content"
             class="editor__preview"
@@ -51,7 +51,6 @@
   </div>
 </template>
 <script>
-
 import TextAreaEditor from '../components/common/TextAreaEditorComponent.vue';
 import MarkdownToHtml from '../components/MarkdownToHtmlComponent.vue';
 import PostService from '../../services/PostService';
@@ -60,66 +59,65 @@ import PrimaryButton from '../components/common/ButtonComponent.vue';
 import MultiselectBff from '../components/common/MultiselectBffComponent.vue';
 
 export default {
-	name: 'PostEditor',
-	components: {
-		TextAreaEditor,
-		PrimaryButton,
-		MarkdownToHtml,
-		MultiselectBff,
-	},
-	data() {
-		return {
-			post: {
-				title: '',
-				content: '# hello',
-				tags: [],
-			},
-			tags: [],
-			initialTags: [],
-			postId: this.$route.params.postId,
-		};
-	},
-	created() {
-		this.init();
-	},
-	methods: {
-		async init() {
-			if (this.postId) {
-				await this.initPost();
-			}
-			await this.initTags();
-		},
-		async initPost() {
-			const post = await PostService.getPost(this.postId);
-			// eslint-disable-next-line no-underscore-dangle
-			this.initialTags = post.tags.map((i) => i._id).slice();
-			this.$set(this, 'post', post);
-		},
-		async initTags() {
-			const tags = await TagService.getTags();
+  name: 'PostEditor',
+  components: {
+    TextAreaEditor,
+    PrimaryButton,
+    MarkdownToHtml,
+    MultiselectBff,
+  },
+  data() {
+    return {
+      post: {
+        title: '',
+        content: '# hello',
+        tags: [],
+      },
+      tags: [],
+      initialTags: [],
+      postId: this.$route.params.postId,
+    };
+  },
+  created() {
+    this.init();
+  },
+  methods: {
+    async init() {
+      if (this.postId) {
+        await this.initPost();
+      }
+      await this.initTags();
+    },
+    async initPost() {
+      const post = await PostService.getPost(this.postId);
+      // eslint-disable-next-line no-underscore-dangle
+      this.initialTags = post.tags.map((i) => i._id).slice();
+      this.$set(this, 'post', post);
+    },
+    async initTags() {
+      const tags = await TagService.getTags();
 
-			this.$set(this, 'tags', tags);
-		},
-		async createPost(isDraft) {
-			this.post.isDraft = isDraft;
-			if (this.postId) {
-				this.$toasted.show('You greatest post was updated');
-			} else {
-				this.$toasted.show('You greatest post was saved');
-			}
+      this.$set(this, 'tags', tags);
+    },
+    async createPost(isDraft) {
+      this.post.isDraft = isDraft;
+      if (this.postId) {
+        this.$toasted.show('You greatest post was updated');
+      } else {
+        this.$toasted.show('You greatest post was saved');
+      }
 
-			await PostService.addOrUpdatePost(this.post);
+      await PostService.addOrUpdatePost(this.post);
 
-			this.$router.push('/');
-		},
-		updateTags(updatedTags) {
-			this.post.tags = updatedTags;
-		},
-	},
+      this.$router.push('/');
+    },
+    updateTags(updatedTags) {
+      this.post.tags = updatedTags;
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
-
 .editor {
   &__header {
     display: flex;
@@ -144,6 +142,7 @@ export default {
     border-width: 0 0 1px 0;
     border-color: darkgray;
     outline: none;
+    background: $white-ghost;
 
     &:focus {
       border-color: $tertiary;
@@ -158,7 +157,7 @@ export default {
   }
 
   &__preview {
-    background-color: #fcf8ff;
+    background-color: $white-ghost;
     height: 100%;
     padding: 10px;
     word-break: break-word;
@@ -182,11 +181,11 @@ export default {
   overflow: visible;
   border: 1px solid;
   border-radius: 5px;
-  border-color: #aca7cb;
+  border-color: $gray-200;
 
   &:focus {
     outline: none;
-    border-width: 2px;
+    border-width: 1px;
   }
 }
 </style>

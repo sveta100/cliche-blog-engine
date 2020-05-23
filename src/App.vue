@@ -2,13 +2,16 @@
   <div id="app">
     <navigation-bar id="nav-bar" />
     <div class="hero-wrapper mb-lg">
-      <div class="hero" />
       <h1 id="mainTitle">
-        In "<em>Wonderland</em>" of Programming
+        In Wonderland of Programming
       </h1>
+      <div class="hero" />
+      <div
+        class="hero-wrapper__decor-container"
+      />
     </div>
     <div class="fl-container">
-      <div class="mt-lg">
+      <div class=" mt-xl">
         <router-view />
       </div>
     </div>
@@ -23,12 +26,15 @@ import Footer from './components/FooterComponent.vue';
 import ActionModal from './components/common/ActionModalComponent.vue';
 
 export default {
-	name: 'App',
-	components: { NavigationBar, ActionModal, Footer },
+  name: 'App',
+  components: {
+    NavigationBar,
+    ActionModal,
+    Footer,
+  },
 };
 </script>
 <style lang="scss">
-
 * {
   margin: 0;
   padding: 0;
@@ -54,9 +60,14 @@ h3 {
 }
 
 h1 {
-  font-size: 5rem;
-  font-weight: 100;
-  font-family: 'Knewave', cursive;
+  // font-size: 5rem;
+  font-weight: 500;
+  font-family:
+    'Segoe UI',
+    Tahoma,
+    Geneva,
+    Verdana,
+    sans-serif;
 }
 
 h2 {
@@ -79,30 +90,34 @@ h2 {
 }
 
 #mainTitle {
-  //font-family: 'Comic Neue', cursive;
-  font-size: 2.5em;
+  font-size: 3em;
   font-weight: 500;
-  position: absolute;
-  color: white;
-  top: 40%;
-  left: 50%;
-  width: 100%;
-  transform: translate(-50%, -40%);
+  padding: 0 5rem;
+  text-align: left;
+  color: #2f2e41;
+  font-family:
+    'Segoe UI',
+    Tahoma,
+    Geneva,
+    Verdana,
+    sans-serif;
 }
 
 .hero-wrapper {
-  position: relative;
   width: 100%;
+  display: flex;
+  padding: 0 5rem;
+  margin-top: 15rem;
+  align-items: flex-start;
 }
 
 .hero {
-  background-image: url("./assets/images/hero.png");
-  height: 300px;
+  background-image: url('./assets/images/undraw_page_not_found_su7k.svg');
+  height: 400px;
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: 50%;
+  background-size: contain;
+  background-position: top;
   width: 100%;
-  filter: blur(2px);
 }
 
 .flex-container {

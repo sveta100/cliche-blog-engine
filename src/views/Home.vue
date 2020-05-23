@@ -1,12 +1,12 @@
 <template>
   <div class="fl-row">
-    <div class="fl-row__col-10">
+    <div class="fl-row__col-9">
       <PostList
         class="post-list"
         :items="posts"
       />
     </div>
-    <div class="fl-row__col-2">
+    <div class="fl-row__col-3">
       <section class="section__right">
         <img
           class="portrait mb-md"
@@ -27,40 +27,38 @@ import TagsList from '../components/TagsListComponent.vue';
 import TagService from '../../services/TagService';
 
 export default {
-	name: 'Home',
-	components: {
-		PostList,
-		TagsList,
-	},
-	data() {
-		return {
-			posts: [],
-			tags: [],
-		};
-	},
-	created() {
-		this.init();
-	},
-	methods: {
-		async init() {
-			await	this.getPosts();
-			await	this.getTags();
-		},
-		async getTags() {
-			const tags = await TagService.getTags();
-			this.$set(this, 'tags', tags);
-		},
-		async getPosts() {
-			await PostService.getPublishedPosts().then((posts) => {
-				this.$set(this, 'posts', posts);
-			});
-		},
-	},
+  name: 'Home',
+  components: {
+    PostList,
+    TagsList,
+  },
+  data() {
+    return {
+      posts: [],
+      tags: [],
+    };
+  },
+  created() {
+    this.init();
+  },
+  methods: {
+    async init() {
+      await this.getPosts();
+      await this.getTags();
+    },
+    async getTags() {
+      const tags = await TagService.getTags();
+      this.$set(this, 'tags', tags);
+    },
+    async getPosts() {
+      await PostService.getPublishedPosts().then((posts) => {
+        this.$set(this, 'posts', posts);
+      });
+    },
+  },
 };
 </script>
 <style lang="scss">
-
-
 .portrait {
   border-radius: 50%;
   max-width: 100px;
@@ -71,6 +69,7 @@ export default {
     display: flex;
     flex-direction: column;
     align-items: center;
+    padding: 2.5rem 2rem;
   }
 }
 </style>

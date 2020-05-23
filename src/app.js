@@ -11,9 +11,9 @@ library.add(fas);
 
 Vue.use(AsyncComputed);
 Vue.use(Toasted);
-Vue.component('font-icon', FontAwesomeIcon);
+Vue.component('FontIcon', FontAwesomeIcon);
 
 new Vue({
-	router, // injecting here so the whole app is aware of the router and accessible via this.$router
-	render: (h) => h(App),
+  router, // injecting here so the whole app is aware of the router and accessible via this.$router
+  render: (h) => h(App),
 }).$mount('#app');

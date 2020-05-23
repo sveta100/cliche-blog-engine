@@ -19,7 +19,7 @@
 
 <script>
 export default {
-	name: 'PostDivider',
+  name: 'PostDivider',
 };
 </script>
 

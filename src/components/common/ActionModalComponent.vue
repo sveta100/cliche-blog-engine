@@ -1,7 +1,5 @@
 <template>
-  <transition
-    name="fade"
-  >
+  <transition name="fade">
     <div
       v-if="showModal"
       class="popup"
@@ -16,7 +14,7 @@
             @click="confirm()"
           />
           <primary-button
-            :name="'No'"
+            :sname="'No'"
             @click="cancel()"
           />
         </div>
@@ -29,33 +27,31 @@
 import PrimaryButton from './ButtonComponent.vue';
 
 export default {
-	name: 'CoolModal',
-	components: {
-		PrimaryButton,
-	},
-	data() {
-		return {
-			showModal: false,
-			confirmHandler: {},
-		};
-	},
-	created() {
-		this.$root.$on('showModal', (cb) => {
-			this.showModal = true;
-			this.confirmHandler = cb;
-		});
-	},
-	methods: {
-		cancel() {
-			this.showModal = false;
-		},
-		confirm() {
-			this.showModal = false;
-			this.confirmHandler();
-		},
-	},
-
-
+  name: 'CoolModal',
+  components: {
+    PrimaryButton,
+  },
+  data() {
+    return {
+      showModal: false,
+      confirmHandler: {},
+    };
+  },
+  created() {
+    this.$root.$on('showModal', (cb) => {
+      this.showModal = true;
+      this.confirmHandler = cb;
+    });
+  },
+  methods: {
+    cancel() {
+      this.showModal = false;
+    },
+    confirm() {
+      this.showModal = false;
+      this.confirmHandler();
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>

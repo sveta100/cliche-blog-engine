@@ -10,18 +10,18 @@
 
 <script>
 export default {
-	name: 'PrimaryButton',
-	props: {
-		name: {
-			type: String,
-			default: 'Button',
-		},
-	},
-	methods: {
-		handleClick() {
-			this.$emit('click');
-		},
-	},
+  name: 'PrimaryButton',
+  props: {
+    name: {
+      type: String,
+      default: 'Button',
+    },
+  },
+  methods: {
+    handleClick() {
+      this.$emit('click');
+    },
+  },
 };
 </script>
 
@@ -39,8 +39,9 @@ export default {
   color: white;
 
   &--default {
-    border: 2px solid #b0a8b9;
-    background-color: #b0a8b9;
+    border: 2px solid $tertiary;
+    background-color: $tertiary;
+    border-radius: 20px;
   }
 }
 </style>

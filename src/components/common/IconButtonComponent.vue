@@ -1,6 +1,6 @@
 <template>
   <button
-    :class="color + ' btn-icon'"
+    :class="color + 'btn-icon'"
     type="button"
     @click="handleClick"
   >
@@ -13,26 +13,26 @@
 
 <script>
 export default {
-	name: 'IconButton',
-	props: {
-		icon: {
-			type: String,
-			default: 'pen',
-		},
-		size: {
-			type: String,
-			default: '2x',
-		},
-		color: {
-			type: String,
-			default: 'cc-lighPur',
-		},
-	},
-	methods: {
-		handleClick() {
-			this.$emit('click');
-		},
-	},
+  name: 'IconButton',
+  props: {
+    icon: {
+      type: String,
+      default: 'pen',
+    },
+    size: {
+      type: String,
+      default: '2x',
+    },
+    color: {
+      type: String,
+      default: 'cc-lighPur',
+    },
+  },
+  methods: {
+    handleClick() {
+      this.$emit('click');
+    },
+  },
 };
 </script>
 

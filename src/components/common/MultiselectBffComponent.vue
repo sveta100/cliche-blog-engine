@@ -26,9 +26,11 @@
           <label
             class="cursor-pointer "
             @click="showTags = !showTags"
-          >Select a tags</label>
+          >
+            Select a tags
+          </label>
           <IconButton
-            :icon="showTags ? 'minus': 'plus'"
+            :icon="showTags ? 'minus' : 'plus'"
             @click="showTags = !showTags"
           />
         </div>
@@ -62,12 +64,11 @@
             class="multiselect__typeahead"
             autofocus
             type="text"
-            @keyup.enter="selectFirstOption($event)"
+            @focusout="showTags = !showTags"
+            @keyup.enter="selectFirstOption()"
             @input="onKeywordChange($event)"
           >
-          <ul
-            class="multiselect__options"
-          >
+          <ul class="multiselect__options">
             <li
               v-for="option in filtered"
               :key="option.id"
@@ -81,10 +82,11 @@
               @click="newOptionAddingOn()"
             >
               Add new
-              <span> <IconButton
-                :icon="'plus'"
-                :size="'2x'"
-              />
+              <span>
+                <IconButton
+                  :icon="'plus'"
+                  :size="'2x'"
+                />
               </span>
             </li>
           </ul>
@@ -99,107 +101,123 @@ import IconButton from './IconButtonComponent.vue';
 import TagService from '../../../services/TagService';
 
 export default {
-	name: 'MultiselectBff',
-	components: {
-		IconButton,
-	},
-	props: {
-		options: {
-			type: Array,
-			default: () => [],
-		},
-		preselected: {
-			type: Array,
-			default: () => [],
-		},
-	},
+  name: 'MultiselectBff',
+  components: {
+    IconButton,
+  },
+  props: {
+    options: {
+      type: Array,
+      default: () => [],
+    },
+    preselected: {
+      type: Array,
+      default: () => [],
+    },
+  },
 
-	data() {
-		return {
-			selectedOptions: [],
-			filtered: this.options.slice(),
-			showTags: false,
-			keyword: '',
-			isNewOption: false,
-			newOptionName: '',
-		};
-	},
-	watch: {
-		options(loadedOptions) {
-			this.options = loadedOptions;
-			this.checkPreselected();
-			this.filterSelectedOut();
-		},
-		preselected(preselected) {
-			this.preselected = preselected;
-		},
-	},
-	methods: {
-		checkPreselected() {
-			// eslint-disable-next-line no-underscore-dangle
-			const options = this.options.filter((i) => this.preselected.includes(i._id));
-			options.forEach((i) => (!this.selectedOptions.includes(i) ? this.selectedOptions.push(i)
-				: this.selectedOptions));
-		},
-		selectFirstOption() {
-			const selectedOpt = this.filtered[0];
-			if (selectedOpt !== undefined && this.searchedOption(selectedOpt)
-       && !this.selectedOptions.includes(selectedOpt)) {
-				this.selectedOptions.push(selectedOpt);
-				this.emptyInput();
-				this.filterSelectedOut();
+  data() {
+    return {
+      selectedOptions: [],
+      filtered: this.options.slice(),
+      showTags: false,
+      keyword: '',
+      isNewOption: false,
+      newOptionName: '',
+    };
+  },
+  watch: {
+    options(loadedOptions) {
+      this.options = loadedOptions;
+      this.checkPreselected();
+      this.filterSelectedOut();
+    },
+    preselected(preselected) {
+      this.preselected = preselected;
+    },
+  },
+  methods: {
+    checkPreselected() {
+      // eslint-disable-next-line no-underscore-dangle
+      const options = this.options.filter((i) => this.preselected.includes(i._id));
 
-				this.updateParent();
-			}
-		},
-		emptyInput() {
-			this.keyword = '';
-		},
-		onKeywordChange(e) {
-			if (!e.target.value) { this.filterSelectedOut(); } else {
-				this.filtered = this.filtered.filter((i) => this.searchedOption(i));
-			}
-		},
-		removeFromSelected(id) {
-			// eslint-disable-next-line no-underscore-dangle
-			this.selectedOptions = this.selectedOptions.filter((i) => i._id !== id);
-			this.filterSelectedOut();
-			this.updateParent();
-		},
-		updateParent() {
-			this.$emit('update-selected', this.selectedOptions);
-		},
-		filterSelectedOut() {
-			this.filtered = this.options.filter((i) => !this.selectedOptions.includes(i));
-			debugger;
-		},
-		searchedOption(option) {
-			return this.keyword !== '' && option.name.toLowerCase().startsWith(this.keyword.toLowerCase());
-		},
-		newOptionAddingOn() {
-			this.isNewOption = true;
-			this.showTags = !this.isNewOption;
-		},
-		async createNewOption() {
-			const addedTag = 	await TagService.addOrUpdateTag({ name: this.newOptionName });
-			if (addedTag) {
-				this.$toasted.show('Created successfully', {
-					duration: 5000,
-					type: 'success',
-				});
-			} else {
-				this.$toasted.show('Error while saving');
-			}
+      options.forEach((i) => (!this.selectedOptions.includes(i)
+        ? this.selectedOptions.push(i)
+        : this.selectedOptions));
+    },
+    selectFirstOption() {
+      const selectedOpt = this.filtered[0];
+      if (
+        selectedOpt !== undefined
+        && this.searchedOption(selectedOpt)
+        && !this.selectedOptions.includes(selectedOpt)
+      ) {
+        this.selectedOptions.push(selectedOpt);
+        this.emptyInput();
+        this.filterSelectedOut();
 
-			this.emptyInput();
-			this.isNewOption = false;
-			this.options.push(addedTag);
-			this.selectedOptions.push(addedTag);
-			this.filterSelectedOut();
-			this.updateParent();
-		},
-	},
+        this.updateParent();
+      }
+    },
+    emptyInput() {
+      this.keyword = '';
+    },
+    onKeywordChange(e) {
+      if (!e.target.value) {
+        this.filterSelectedOut();
+      } else {
+        this.filtered = this.filtered.filter((i) => this.searchedOption(i));
+      }
+    },
+    removeFromSelected(id) {
+      // eslint-disable-next-line no-underscore-dangle
+      this.selectedOptions = this.selectedOptions.filter(
+        (i) => i._id !== id,
+      );
+      this.filterSelectedOut();
+      this.updateParent();
+    },
+    updateParent() {
+      this.$emit('update-selected', this.selectedOptions);
+    },
+    filterSelectedOut() {
+      this.filtered = this.options.filter(
+        (i) => !this.selectedOptions.includes(i),
+      );
+    },
+    searchedOption(option) {
+      return (
+        this.keyword !== ''
+        && option.name
+          .toLowerCase()
+          .startsWith(this.keyword.toLowerCase())
+      );
+    },
+    newOptionAddingOn() {
+      this.isNewOption = true;
+      this.showTags = !this.isNewOption;
+    },
+    async createNewOption() {
+      const addedTag = await TagService.addOrUpdateTag({
+        name: this.newOptionName,
+      });
+      if (addedTag) {
+        this.$toasted.show('Created successfully', {
+          duration: 5000,
+          type: 'success',
+        });
+      } else {
+        this.$toasted.show('Error while saving');
+      }
 
+      this.emptyInput();
+      this.isNewOption = false;
+      this.options.push(addedTag);
+      this.selectedOptions.push(addedTag);
+      this.filterSelectedOut();
+      this.updateParent();
+    },
+  },
 };
 </script>
 <style lang="scss" scoped>
@@ -222,14 +240,9 @@ export default {
   &__typeahead {
     padding: 10px 5px;
     min-width: 400px;
-    border-color: darkgray;
+    border: 1px solid darkgray;
     outline: none;
     border-radius: 5px;
-
-    &:focus {
-      border-color: $tertiary;
-      box-shadow: 0 4px 6px -6px $tertiary;
-    }
   }
 
   &__new-opt-buttons {
