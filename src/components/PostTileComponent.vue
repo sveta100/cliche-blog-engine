@@ -32,16 +32,11 @@
         class="card__content"
       />
     </div>
-    <PostDivider
-      class="mb-lg mt-lg"
-      :text="post.title"
-    />
   </div>
 </template>
 <script>
 import marked from 'marked';
 import DateFormat from './common/DateFormatComponent.vue';
-import PostDivider from './common/PostDivider.vue';
 import IconButton from './common/IconButtonComponent.vue';
 import MarkdownToHtml from './MarkdownToHtmlComponent.vue';
 
@@ -49,7 +44,6 @@ export default {
   name: 'PostTile',
   components: {
     DateFormat,
-    PostDivider,
     IconButton,
     MarkdownToHtml,
   },

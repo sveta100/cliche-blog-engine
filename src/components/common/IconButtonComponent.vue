@@ -1,6 +1,6 @@
 <template>
   <button
-    :class="color + 'btn-icon'"
+    :class="color + ' btn-icon'"
     type="button"
     @click="handleClick"
   >
