@@ -41,4 +41,21 @@ export default {
       });
     return res.data;
   },
+
+  async getNextPost(date) {
+    const res = await axios
+      .get(`http://localhost:4000/api/posts/sort=gt/${date}`)
+      .catch((error) => {
+        console.log(`${error} error while getting a post`);
+      });
+    return res.data;
+  },
+  async getPrevPost(date) {
+    const res = await axios
+      .get(`http://localhost:4000/api/posts/sort=lt/${date}`)
+      .catch((error) => {
+        console.log(`${error} error while getting a post`);
+      });
+    return res.data;
+  },
 };

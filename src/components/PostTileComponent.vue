@@ -1,7 +1,7 @@
 <template>
   <div class="card mb-md">
     <div class="card__header pb-md">
-      <div class="fl-row justify-center align-baseline">
+      <div class="fl-row js align-baseline">
         <h1 @click="viewPost(post._id)">
           {{ post.title }}
         </h1>
@@ -17,7 +17,7 @@
           />
         </div>
       </div>
-      <div class="card__subheader justify-center">
+      <div class="card__subheader js">
         <div class="card__header-date">
           <date-format
             :raw-date="post.createdAt"
@@ -27,10 +27,14 @@
       </div>
     </div>
     <div class="card__content-wrapper">
+      <div class="card__thumb" />
       <MarkdownToHtml
-        :markdown="post.content"
+        :markdown="post.summary"
         class="card__content"
       />
+    </div>
+    <div class="cc-violet tb">
+      <a @click="viewPost(post._id)">Read more...</a>
     </div>
   </div>
 </template>
@@ -80,20 +84,38 @@ export default {
   width: 70rem;
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
 
   &__header {
     align-items: flex-start;
     position: relative;
     justify-content: center;
+    width: 100%;
 
     &:hover {
       cursor: pointer;
+
+      & h1 {
+        background:
+          linear-gradient(
+            90deg,
+            rgba(63, 56, 182, 1) 0%,
+            rgba(105, 105, 255, 1) 48%,
+            rgba(140, 86, 209, 1) 100%
+          );
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        text-decoration: underline;
+      }
     }
+  }
+
+  &__content-wrapper {
+    display: flex;
   }
 
   &__content {
     text-align: justify;
-    padding: 30px 0;
   }
 
   &__actions {

@@ -48,9 +48,9 @@ html {
 body,
 input,
 textarea {
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-family: 'Montserrat', sans-serif;
-  line-height: 1.8;
+  line-height: 1.6;
 }
 
 h1,
@@ -73,6 +73,12 @@ h1 {
 h2 {
   font-size: 4rem;
   font-weight: 100;
+}
+
+a {
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 #app {
@@ -112,7 +118,7 @@ h2 {
 }
 
 .hero {
-  background-image: url('./assets/images/undraw_page_not_found_su7k.svg');
+  background-image: url('./assets/images/undraw_web_development_w2vv.svg');
   height: 400px;
   background-repeat: no-repeat;
   background-size: contain;

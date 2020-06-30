@@ -27,7 +27,7 @@
 }
 
 .pb-md {
-  padding-bottom: 1rem;
+  padding-bottom: 2rem;
 }
 
 .pb-lg {
@@ -43,6 +43,14 @@
   justify-content: center;
 }
 
+.js {
+  justify-content: flex-start;
+}
+
+.sb {
+  justify-content: space-between;
+}
+
 .align-baseline {
   align-items: baseline;
 }
@@ -55,6 +63,10 @@
 
 .cc-lighPur {
   color: $tertiary;
+}
+
+.cc-violet {
+  color: $violet;
 }
 
 .gray-cc {
@@ -73,4 +85,9 @@
 //general
 .cursor-pointer {
   cursor: pointer;
+}
+
+//Text styles
+.tb {
+  font-weight: bold;
 }

@@ -1,12 +1,9 @@
 import express from 'express';
+import path from 'path';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose from 'mongoose';
-import path from 'path';
-import fs from 'fs';
-import history from 'connect-history-api-fallback';
-import dbconfig from './config/db.config';
-import devServer from './build/dev-server';
+import dbconfig from '../config/db.config';
 import routes from './routes';
 
 const app = express();
@@ -15,27 +12,18 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 app.use(cors());
-const indexHTML = (() => fs.readFileSync(path.resolve(__dirname, './public/index.html'), 'utf-8'))();
-
-// Select which directories or files under public can be served to users
-app.use('/dist', express.static(path.resolve(__dirname, './dist')));
-
 routes(app);
-devServer(app);
-
 const port = process.env.PORT || 4000;
 
-app.get('*', (req, res) => {
-  res.write(indexHTML);
-  res.end();
-});
+if (process.env.NODE_ENV === 'production') {
+  // Select which directories or files under public can be served to users
+  app.use('/dist', express.static(path.resolve(__dirname, '/public/')));
 
-app.use(
-  history({
-    verbose: true,
-  }),
-);
-
+  // Handle SPA
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '/public/index.html'));
+  });
+}
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });

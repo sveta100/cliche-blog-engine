@@ -161,6 +161,7 @@ export default {
     height: 100%;
     padding: 10px;
     word-break: break-word;
+    text-align: left;
   }
 
   &__writer {

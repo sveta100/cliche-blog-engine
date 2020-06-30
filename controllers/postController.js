@@ -50,6 +50,25 @@ exports.get_a_post = (req, res) => {
   }).populate('tags');
 };
 
+exports.get_next_post = (req, res) => {
+  const { date } = req.params;
+  Post.find({ isDraft: false, createdAt: { $gt: date } }, (err, post) => {
+    if (err) console.error(err);
+    console.log(post);
+    res.send(post);
+  }).sort({ createdAt: 1 }).limit(1).populate('tags');
+};
+
+exports.get_prev_post = (req, res) => {
+  const { date } = req.params;
+  Post.find({ isDraft: false, createdAt: { $lt: date } }, (err, post) => {
+    if (err) console.error(err);
+
+    res.send(post);
+  }).sort({ createdAt: -1 }).limit(1).populate('tags');
+};
+
+
 exports.delete_a_post = (req, res) => {
   const { id } = req.params;
   Post.deleteOne({ _id: id }, (err, post) => {
