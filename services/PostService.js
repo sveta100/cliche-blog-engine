@@ -1,61 +1,49 @@
 import axios from 'axios';
+import handleAsyncResult from './asyncResHandler';
 
 export default {
   async getPosts() {
-    const res = await axios
-      .get('http://localhost:4000/api/posts')
-      .catch((error) => {
-        console.log(`${error}error while getting posts`);
-      });
-    return res.data;
+    const [error, res] = await handleAsyncResult(axios
+      .get('http://localhost:4000/api/posts'));
+    if (res) { return res.data; }
+    throw `${error} Error occurred while getting posts`();
   },
   async getPost(postId) {
-    const res = await axios
-      .get(`http://localhost:4000/api/posts/${postId}`)
-      .catch((error) => {
-        console.log(`${error} error while getting a post`);
-      });
-    return res.data;
+    const [error, res] = await handleAsyncResult(axios
+      .get(`http://localhost:4000/api/posts/${postId}`));
+
+    if (res) { return res.data; }
+    throw `${error} Error occurred while getting post`();
   },
   async getPublishedPosts() {
-    const res = await axios
-      .get('http://localhost:4000/api/posts?published=true')
-      .catch((error) => {
-        console.log(`${error} error while getting posts`);
-      });
-    return res.data;
+    const [error, res] = await handleAsyncResult(axios
+      .get('http://localhost:4000/api/posts?published=true'));
+    if (res) { return res.data; }
+    throw `${error} Error occurred while getting post`();
   },
   async addOrUpdatePost(post) {
-    const res = axios
-      .post('http://localhost:4000/api/posts', post)
-      .catch((error) => {
-        console.log(`${error} error while updating a post`);
-      });
-    return res.data;
+    const [error, res] = await handleAsyncResult(axios
+      .post('http://localhost:4000/api/posts', post));
+    if (res) { return res.data; }
+    throw `${error} error while updating a post`();
   },
   async deleteBlogPost(postId) {
-    const res = axios
-      .delete(`http://localhost:4000/api/posts/${postId}`)
-      .catch((error) => {
-        console.log(`${error} error while deleting a post`);
-      });
-    return res.data;
+    const [error, res] = await handleAsyncResult(axios
+      .delete(`http://localhost:4000/api/posts/${postId}`));
+    if (res) { return res.data; }
+    throw `${error} error while deleting a post`();
   },
 
   async getNextPost(date) {
-    const res = await axios
-      .get(`http://localhost:4000/api/posts/sort=gt/${date}`)
-      .catch((error) => {
-        console.log(`${error} error while getting a post`);
-      });
-    return res.data;
+    const [error, res] = await handleAsyncResult(axios
+      .get(`http://localhost:4000/api/posts/sort=gt/${date}`));
+    if (res) { return res.data; }
+    throw `${error} error while getting next post`();
   },
   async getPrevPost(date) {
-    const res = await axios
-      .get(`http://localhost:4000/api/posts/sort=lt/${date}`)
-      .catch((error) => {
-        console.log(`${error} error while getting a post`);
-      });
-    return res.data;
+    const [error, res] = await handleAsyncResult(axios
+      .get(`http://localhost:4000/api/posts/sort=lt/${date}`));
+    if (res) { return res.data; }
+    throw `${error} error while getting previous post`();
   },
 };
