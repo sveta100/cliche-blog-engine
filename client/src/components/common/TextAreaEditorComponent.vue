@@ -28,7 +28,6 @@ export default {
   methods: {
     update(e) {
       this.outputText = e.target.value;
-      console.log(this.outputText);
       this.$emit('update:content', this.outputText);
     },
   },

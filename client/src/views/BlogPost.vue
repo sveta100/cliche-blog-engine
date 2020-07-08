@@ -63,12 +63,7 @@ export default {
 
   computed: {
     compiledMarkdown() {
-      if (this.post.content) {
-        return marked(this.post.content, {
-          sanitize: true,
-        });
-      }
-      return console.log('waiting');
+      return marked(this.post.content);
     },
   },
   created() {

@@ -4,7 +4,8 @@
   "description": "A cliche blogging app to learn vue.js",
   "scripts": {
     "test": "jest",
-    "serve": "webpack-dev-server --config webpack.dev.js --open --host 0.0.0.0",
+    "serve": "webpack-dev-server --config webpack.dev.js --open",
+    "serve:docker": "webpack-dev-server --config webpack.dev.js --open --host 0.0.0.0",
     "build": "webpack --config webpack.prod.js",
     "deploy": "npm run build ",
     "dev:debug": "nodemon --require @babel/register --inspect src/index.js",
