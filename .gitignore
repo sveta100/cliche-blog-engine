@@ -1,9 +1,12 @@
 # dependencies
-/node_modules
+./node_modules
+/client/node_modules
+/server/node_modules
+
 /dist
 
 # testing
-/coverage
+/client/coverage
 
 
 
@@ -24,4 +27,4 @@ yarn-error.log*
 *.njsproj
 *.sln
 *.sw?
-package-lock.json
+

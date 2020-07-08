@@ -3,7 +3,7 @@ import path from 'path';
 import bodyParser from 'body-parser';
 import cors from 'cors';
 import mongoose from 'mongoose';
-import dbconfig from '../config/db.config';
+import dbconfig from './config/db.config';
 import routes from './routes';
 
 const app = express();
@@ -24,11 +24,12 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.resolve(__dirname, '/public/index.html'));
   });
 }
+
 app.listen(port, () => {
   console.log(`listening on port ${port}`);
 });
 
-mongoose.connect(dbconfig.url, {
+mongoose.connect(dbconfig.MONGO_URL, {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useFindAndModify: false,

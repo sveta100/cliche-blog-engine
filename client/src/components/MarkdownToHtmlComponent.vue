@@ -5,7 +5,6 @@
 import marked from 'marked';
 import Prism from 'prismjs';
 
-
 function prismCodeHtml(inputCode, lang) {
   let results;
   const code = inputCode || '';
@@ -20,7 +19,6 @@ function prismCodeHtml(inputCode, lang) {
 marked.setOptions({
   highlight: prismCodeHtml,
 });
-
 
 export default {
   name: 'MarkdownToHtml',

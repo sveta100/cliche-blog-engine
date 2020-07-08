@@ -1,5 +1,5 @@
-import PostCtrl from '../controllers/postController';
-import TagCtrl from '../controllers/tagController';
+import PostCtrl from './controllers/postController';
+import TagCtrl from './controllers/tagController';
 
 export default function routes(app) {
   app.route('/api/posts').post(PostCtrl.add_or_update_post);

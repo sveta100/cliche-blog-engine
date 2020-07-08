@@ -1,5 +1,5 @@
 import { shallowMount } from '@vue/test-utils';
-import PostList from '../src/components/PostListComponent.vue';
+import PostList from '../components/PostListComponent.vue';
 
 jest.mock('axios');
 

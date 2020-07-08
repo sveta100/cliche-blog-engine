@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Button from '../src/components/common/ButtonComponent.vue';
+import Button from '../components/common/ButtonComponent.vue';
 
 describe('Button component', () => {
   const wrapper = mount(Button);

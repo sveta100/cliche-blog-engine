@@ -1,16 +1,33 @@
 version: "3"
 services:
-  web:
-    container_name: bloggi_dev
+  client:
+    build: 
+        dockerfile: Dockerfile.dev
+        context: ./client         
+    volumes: 
+      - /app/node_modules
+      - ./client:/app
+    ports: 
+      - "8080:8080"
+  api:    
     restart: always
-    build: .
-    command: "node starter.js"
+    build: 
+      dockerfile: Dockerfile.dev
+      context: ./server
+    volumes: 
+      - /app/node_modules
+      - ./server:/app
     ports:
-      - "4000:4000"
+      - "4000:4000"  
+    environment: 
+      - MONGO_URL=mongodb://db:27017/clicheblogdb
     depends_on:
-      - mongo
-  mongo:
-    container_name: mongo
+      - db
+  db:    
     image: mongo
+    restart: always       
     ports:
       - "27017:27017"
+    
+  
+  

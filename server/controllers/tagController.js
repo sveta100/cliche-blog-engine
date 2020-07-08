@@ -10,7 +10,6 @@ exports.get_all_tags = (req, res) => {
 exports.add_or_update_a_tag = (req, res) => {
   const tagModel = new Tag(req.body);
   console.log(tagModel);
-  // eslint-disable-next-line no-underscore-dangle
   Tag.findOneAndUpdate(
     { _id: tagModel._id },
     tagModel,
