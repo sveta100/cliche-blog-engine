@@ -1,3 +1,5 @@
 module.exports = {
-    PORT: process.env.PORT || "4000"
-}
+  API_URL: process.env.BACKEND_URL
+    ? process.env.BACKEND_URL
+    : 'http://localhost:5000',
+};

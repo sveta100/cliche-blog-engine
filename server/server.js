@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 
 app.use(cors());
 routes(app);
-const port = process.env.PORT || 4000;
+const port = process.env.PORT || 5000;
 
 if (process.env.NODE_ENV === 'production') {
   // Select which directories or files under public can be served to users

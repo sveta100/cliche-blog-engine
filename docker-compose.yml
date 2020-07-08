@@ -1,34 +1,39 @@
-version: "3"
+version: '3'
 services:
   client:
-    build: 
-        dockerfile: Dockerfile.dev
-        context: ./client         
-    volumes: 
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./client
+    volumes:
       - /app/node_modules
       - ./client:/app
-    ports: 
-      - "8080:8080"
-  api:    
+    ports:
+      - '8080:8080'
+  test:
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./client
+    volumes:
+      - /app/node_modules
+      - ./client:/app
+    command: ['npm', 'run', 'test']
+  api:
     restart: always
-    build: 
+    build:
       dockerfile: Dockerfile.dev
       context: ./server
-    volumes: 
+    volumes:
       - /app/node_modules
       - ./server:/app
     ports:
-      - "5000:5000"  
-    environment: 
+      - '5000:5000'
+    environment:
       - MONGO_URL=mongodb://db:27017/clicheblogdb
       - PORT=5000
     depends_on:
       - db
-  db:    
+  db:
     image: mongo
-    restart: always       
+    restart: always
     ports:
-      - "27017:27017"
-    
-  
-  
+      - '27017:27017'

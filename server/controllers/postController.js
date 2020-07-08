@@ -68,7 +68,6 @@ exports.get_prev_post = (req, res) => {
   }).sort({ createdAt: -1 }).limit(1).populate('tags');
 };
 
-
 exports.delete_a_post = (req, res) => {
   const { id } = req.params;
   Post.deleteOne({ _id: id }, (err, post) => {
