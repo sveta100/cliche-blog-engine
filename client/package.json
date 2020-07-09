@@ -5,10 +5,9 @@
   "scripts": {
     "test": "jest",
     "serve": "webpack-dev-server --config webpack.dev.js --open",
-    "serve:docker": "webpack-dev-server --config webpack.dev.js --open --host 0.0.0.0",
+    "serve:docker": "webpack-dev-server --config webpack.dev.js --open",
     "build": "webpack --config webpack.prod.js",
     "deploy": "npm run build ",
-    "dev:debug": "nodemon --require @babel/register --inspect src/index.js",
     "lint:fix": "eslint --fix --ext .js,.vue ."
   },
   "author": "",

@@ -1,5 +1,15 @@
 version: '3'
 services:
+  nginx:
+    restart: always
+    build:
+      dockerfile: Dockerfile.dev
+      context: ./nginx
+    ports:
+      - '8080:80'
+    depends_on:
+      - api
+      - client
   client:
     build:
       dockerfile: Dockerfile.dev
@@ -7,8 +17,6 @@ services:
     volumes:
       - /app/node_modules
       - ./client:/app
-    ports:
-      - '8080:8080'
   test:
     build:
       dockerfile: Dockerfile.dev
@@ -25,11 +33,8 @@ services:
     volumes:
       - /app/node_modules
       - ./server:/app
-    ports:
-      - '5000:5000'
     environment:
       - MONGO_URL=mongodb://db:27017/clicheblogdb
-      - PORT=5000
     depends_on:
       - db
   db:

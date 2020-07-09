@@ -7,7 +7,12 @@ module.exports = merge(common, {
   mode: 'development',
   devtool: 'eval-source-map',
   devServer: {
-    historyApiFallback: true,
+    host: '0.0.0.0',
+    port: 8080,
+    historyApiFallback: false,
+    hot: true,
+    inline: true,
+    disableHostCheck: true,
   },
   module: {
     rules: [
@@ -25,6 +30,5 @@ module.exports = merge(common, {
       files: ['**/*.{vue,htm,html,css,sss,less,scss,sass}'],
       fix: true,
     }),
-
   ],
 });

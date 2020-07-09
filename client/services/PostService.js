@@ -4,9 +4,7 @@ import * as config from './config';
 
 export default {
   async getPosts() {
-    const [error, res] = await handleAsyncResult(
-      axios.get(`${config.API_URL}/api/posts`),
-    );
+    const [error, res] = await handleAsyncResult(axios.get('/api/posts'));
     if (res) {
       return res.data;
     }
@@ -14,7 +12,7 @@ export default {
   },
   async getPost(postId) {
     const [error, res] = await handleAsyncResult(
-      axios.get(`${config.API_URL}/api/posts/${postId}`),
+      axios.get(`/api/posts/${postId}`),
     );
 
     if (res) {
@@ -25,7 +23,7 @@ export default {
   async getPublishedPosts() {
     console.log(config.API_URL);
     const [error, res] = await handleAsyncResult(
-      axios.get(`${config.API_URL}/api/posts?published=true`),
+      axios.get('/api/posts?published=true'),
     );
     if (res) {
       return res.data;
@@ -34,7 +32,7 @@ export default {
   },
   async addOrUpdatePost(post) {
     const [error, res] = await handleAsyncResult(
-      axios.post(`${config.API_URL}/api/posts`, post),
+      axios.post('/api/posts', post),
     );
     if (res) {
       return res.data;
@@ -43,7 +41,7 @@ export default {
   },
   async deleteBlogPost(postId) {
     const [error, res] = await handleAsyncResult(
-      axios.delete(`${config.API_URL}/api/posts/${postId}`),
+      axios.delete(`/api/posts/${postId}`),
     );
     if (res) {
       return res.data;
@@ -53,7 +51,7 @@ export default {
 
   async getNextPost(date) {
     const [error, res] = await handleAsyncResult(
-      axios.get(`${config.API_URL}/api/posts/sort=gt/${date}`),
+      axios.get(`/api/posts/sort=gt/${date}`),
     );
     if (res) {
       return res.data;
@@ -62,7 +60,7 @@ export default {
   },
   async getPrevPost(date) {
     const [error, res] = await handleAsyncResult(
-      axios.get(`${config.API_URL}/api/posts/sort=lt/${date}`),
+      axios.get(`/api/posts/sort=lt/${date}`),
     );
     if (res) {
       return res.data;

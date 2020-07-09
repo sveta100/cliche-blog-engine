@@ -3,12 +3,10 @@
     <navigation-bar id="nav-bar" />
     <div class="hero-wrapper mb-lg">
       <h1 id="mainTitle">
-        In Wonderland of Programming
+        In Wonderland of Programming.
       </h1>
       <div class="hero" />
-      <div
-        class="hero-wrapper__decor-container"
-      />
+      <div class="hero-wrapper__decor-container" />
     </div>
     <div class="fl-container">
       <div class=" mt-xl">
@@ -62,12 +60,7 @@ h3 {
 h1 {
   // font-size: 5rem;
   font-weight: 500;
-  font-family:
-    'Segoe UI',
-    Tahoma,
-    Geneva,
-    Verdana,
-    sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 h2 {
@@ -101,12 +94,7 @@ a {
   padding: 0 5rem;
   text-align: left;
   color: #2f2e41;
-  font-family:
-    'Segoe UI',
-    Tahoma,
-    Geneva,
-    Verdana,
-    sans-serif;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .hero-wrapper {

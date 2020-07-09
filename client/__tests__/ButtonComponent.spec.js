@@ -1,5 +1,5 @@
 import { mount } from '@vue/test-utils';
-import Button from '../components/common/ButtonComponent.vue';
+import Button from '../src/components/common/ButtonComponent.vue';
 
 describe('Button component', () => {
   const wrapper = mount(Button);
@@ -9,6 +9,7 @@ describe('Button component', () => {
   });
 
   test('renders correct markup', () => {
-    expect(wrapper.contains('button')).toBe(true);
+    const btn = wrapper.find('button');
+    expect(btn.exists()).toBe(true);
   });
 });

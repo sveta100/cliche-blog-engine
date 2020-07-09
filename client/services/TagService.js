@@ -1,21 +1,16 @@
 import axios from 'axios';
 import handleAsyncResult from './asyncResHandler';
-import * as config from './config';
 
 export default {
   async getTags() {
-    const [error, res] = await handleAsyncResult(
-      axios.get(`${config.API_URL}/api/tags`),
-    );
+    const [error, res] = await handleAsyncResult(axios.get('/api/tags'));
     if (res) {
       return res.data;
     }
     throw `${error}error while getting tags`();
   },
   async addOrUpdateTag(tag) {
-    const [error, res] = await handleAsyncResult(
-      axios.post(`${config.API_URL}/api/tags`, tag),
-    );
+    const [error, res] = await handleAsyncResult(axios.post('/api/tags', tag));
     if (res) {
       return res.data;
     }
@@ -23,7 +18,7 @@ export default {
   },
   async deleteTag(tagId) {
     const [error, res] = await handleAsyncResult(
-      axios.delete(`${config.API_URL}/api/tags?=${tagId}`),
+      axios.delete(`/api/tags?=${tagId}`),
     );
     if (res) {
       return res.data;
