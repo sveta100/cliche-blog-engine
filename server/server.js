@@ -15,15 +15,15 @@ app.use(cors());
 routes(app);
 const port = process.env.PORT || 5000;
 
-if (process.env.NODE_ENV === 'production') {
+/* if (process.env.NODE_ENV === 'production') {
   // Select which directories or files under public can be served to users
-  app.use('/dist', express.static(path.resolve(__dirname, '/public/')));
+  app.use('/dist', express.static('dist'));
 
   // Handle SPA
   app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '/public/index.html'));
+    res.sendFile(path.resolve(__dirname, 'index.html'));
   });
-}
+} */
 
 app.listen(port, () => {
   console.log(`listening on port ${port}`);

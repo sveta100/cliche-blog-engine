@@ -35,6 +35,7 @@ services:
       - ./server:/app
     environment:
       - MONGO_URL=mongodb://db:27017/clicheblogdb
+      - PORT=5000
     depends_on:
       - db
   db:

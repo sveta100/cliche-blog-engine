@@ -9,10 +9,8 @@ module.exports = merge(common, {
   devServer: {
     host: '0.0.0.0',
     port: 8080,
-    historyApiFallback: false,
+    historyApiFallback: true,
     hot: true,
-    inline: true,
-    disableHostCheck: true,
   },
   module: {
     rules: [

@@ -66,14 +66,10 @@ module.exports = {
           },
           // this matches plain `<style>` or `<style scoped>`
           {
-            use: [
-              'vue-style-loader',
-              'css-loader',
-            ],
+            use: ['vue-style-loader', 'css-loader'],
           },
         ],
       },
-
     ],
   },
   resolve: {
@@ -88,6 +84,5 @@ module.exports = {
     }),
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
-
   ],
 };
