@@ -1,22 +1,22 @@
 services:
   - docker
 
-  before_install:
-    - docker build -t svetab/vue-blog-test -f ./client/Dockerfile.dev ./client
+before_install:
+  - docker build -t svetab/vue-blog-test -f ./client/Dockerfile.dev ./client
   
-  script:
-    - docker run svetab/vue-blog-test npm run test -- --coverage
+script:
+  - docker run svetab/vue-blog-test npm run test -- --coverage
   
-  after_success:
-    - docker build -t svetab/vue-blog-client ./client
-    - docker build -t svetab/vue-blog-nginx ./nginx
-    - docker build -t svetab/vue-blog-server ./server
-    # Log in to docker cli
-    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-    # push images to docker hub
-    - docker push svetab/vue-blog-client
-    - docker push svetab/vue-blog-nginx
-    - docker push vetab/vue-blog-server
+after_success:
+  - docker build -t svetab/vue-blog-client ./client
+  - docker build -t svetab/vue-blog-nginx ./nginx
+  - docker build -t svetab/vue-blog-server ./server
+  # Log in to docker cli
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  # push images to docker hub
+  - docker push svetab/vue-blog-client
+  - docker push svetab/vue-blog-nginx
+  - docker push vetab/vue-blog-server
 
 
   
