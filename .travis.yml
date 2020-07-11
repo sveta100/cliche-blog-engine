@@ -16,7 +16,7 @@ after_success:
   # push images to docker hub
   - docker push svetab/vue-blog-client
   - docker push svetab/vue-blog-nginx
-  - docker push vetab/vue-blog-server
+  - docker push svetab/vue-blog-server
 
 
   
