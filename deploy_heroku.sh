@@ -7,4 +7,4 @@ docker tag svetab/vue-blog-nginx registry.heroku.com/cliche-blog-app/nginx
 docker push registry.heroku.com/$HEROKU_APP_NAME/nginx
 docker tag svetab/vue-blog-server registry.heroku.com/cliche-blog-app/server
 docker push registry.heroku.com/$HEROKU_APP_NAME/server
-heroku container:release nginx web server
+heroku container:release nginx web server -a $HEROKU_APP_NAME
