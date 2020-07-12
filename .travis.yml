@@ -20,5 +20,8 @@ after_success:
 
 deploy:
   provider: script
-  script: bash deploy_heroku.sh
+  script: 
+    docker tag svetab/vue-blog-client registry.heroku.com/cliche-blog-app/web
+    docker push registry.heroku.com/$HEROKU_APP_NAME/web;
+    heroku container:release web --app $HEROKU_APP_NAME
 
