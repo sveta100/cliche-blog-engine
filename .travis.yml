@@ -23,12 +23,11 @@ deploy:
   app_key: $HEROKU_APP_KEY
   run: 
     - echo "$HEROKU_APP_KEY" | docker login -u "$HEROKU_APP_KEY" --password-stdin registry.heroku.com
-    - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
     - docker tag svetab/vue-blog-client registry.heroku.com/cliche-blog-engine/web
     - docker tag svetab/vue-blog-nginx registry.heroku.com/cliche-blog-engine/nginx
     - docker tag svetab/vue-blog-server registry.heroku.com/cliche-blog-engine/server
     - docker push registry.heroku.com/cliche-blog-engine/web;
     - docker push registry.heroku.com/cliche-blog-engine/nginx;
     - docker push registry.heroku.com/cliche-blog-engine/server;
-    - heroku container:release web nginx server --app cliche-blog-engine heroku/nodejs
+    - heroku container:release web nginx server --app cliche-blog-engine
 
