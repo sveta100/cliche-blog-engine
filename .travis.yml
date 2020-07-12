@@ -19,6 +19,6 @@ after_success:
   - docker push svetab/vue-blog-server
 
 deploy:
-  – sh .travis/deploy_heroku.sh
+  - sh ./deploy_heroku.sh
   
 
