@@ -3,7 +3,7 @@
     <navigation-bar id="nav-bar" />
     <div class="hero-wrapper mb-lg">
       <h1 id="mainTitle">
-        In Wonderland of Programming.
+        In Wonderland of Programming
       </h1>
       <div class="hero" />
       <div class="hero-wrapper__decor-container" />

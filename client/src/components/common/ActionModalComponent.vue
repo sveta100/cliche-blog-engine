@@ -14,7 +14,7 @@
             @click="confirm()"
           />
           <primary-button
-            :sname="'No'"
+            :name="'No'"
             @click="cancel()"
           />
         </div>

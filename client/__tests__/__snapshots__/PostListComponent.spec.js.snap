@@ -1,9 +1,8 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`PostList component renders correctly 1`] = `
-VueWrapper {
-  "_emitted": Object {},
-  "_emittedByOrder": Array [],
-  "isFunctionalComponent": undefined,
-}
+"<div class=\\"posts\\">
+  <posttile-stub post=\\"[object Object]\\"></posttile-stub>
+  <posttile-stub post=\\"[object Object]\\"></posttile-stub>
+</div>"
 `;

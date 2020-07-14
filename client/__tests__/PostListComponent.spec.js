@@ -21,7 +21,7 @@ describe('PostList component', () => {
   });
 
   it('renders correctly', () => {
-    expect(wrapper).toMatchSnapshot();
+    expect(wrapper.html()).toMatchSnapshot();
   });
 
   it('deletes a blog post from the list', () => {
