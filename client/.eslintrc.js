@@ -14,8 +14,10 @@ module.exports = {
     SharedArrayBuffer: 'readonly',
   },
   parserOptions: {
+    parser: 'babel-eslint',
     ecmaVersion: 2018,
     sourceType: 'module',
+    allowImportExportEverywhere: true
   },
   plugins: ['vue'],
   rules: {
@@ -24,4 +26,5 @@ module.exports = {
     'no-console': process.env.NODE_ENV === 'production' ? 2 : 0,
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
   },
+  
 };

@@ -103,6 +103,7 @@ export default {
             rgba(105, 105, 255, 1) 48%,
             rgba(140, 86, 209, 1) 100%
           );
+        background-clip: text;
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         text-decoration: underline;

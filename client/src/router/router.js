@@ -1,9 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
-import PostEditor from '../views/PostEditor.vue';
 import About from '../views/About.vue';
-import BlogPost from '../views/BlogPost.vue';
+
+const Home = () => import(/* webpackChunkName: "Home view" */ '../views/Home.vue');
+const PostEditor = () => import(/* webpackChunkName: "Editor view" */ '../views/PostEditor.vue');
+const BlogPost = () => import(/* webpackChunkName: "Blog view" */ '../views/BlogPost.vue');
 
 Vue.use(VueRouter);
 

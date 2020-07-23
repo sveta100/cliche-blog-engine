@@ -41,13 +41,14 @@ export default {
   },
   methods: {
     async deletePost(postId) {
-      await PostService.deleteBlogPost(postId);
-      this.$toasted.show('The blog post deleted');
       this.deletePostFromList(postId);
+      await PostService.deleteBlogPost(postId);
     },
     deletePostFromList(postId) {
       // eslint-disable-next-line no-underscore-dangle
       this.posts = this.posts.filter((post) => post._id !== postId);
+      this.$toasted.show('The blog post deleted');
+      console.log(postId, this.posts);
     },
 
   },
