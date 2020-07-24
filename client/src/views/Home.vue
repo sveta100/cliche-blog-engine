@@ -1,36 +1,30 @@
 <template>
-  <div class="fl-row">
-    <div class="fl-row__col-9">
-      <PostList
-        class="post-list"
-        :items="posts"
-      />
+  <main>
+    <div class="fl-container">
+      <div class=" mt-xl">
+        <div class="fl-row">
+          <div class="fl-row__col-9">
+            <PostList
+              class="post-list"
+              :items="posts"
+            />
+          </div>
+        </div>
+      </div>
     </div>
-    <div class="fl-row__col-3">
-      <section class="section__right">
-        <img
-          class="portrait mb-md"
-          src="../assets/images/portrait.jpg"
-        >
-        <h4 class="mb-md">
-          Categories
-        </h4>
-        <TagsList :options="tags" />
-      </section>
-    </div>
-  </div>
+  </main>
 </template>
 <script>
 import PostService from '../../services/PostService';
 import PostList from '../components/PostListComponent.vue';
-import TagsList from '../components/TagsListComponent.vue';
+
 import TagService from '../../services/TagService';
 
 export default {
   name: 'Home',
   components: {
     PostList,
-    TagsList,
+
   },
   data() {
     return {

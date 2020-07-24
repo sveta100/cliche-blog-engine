@@ -24,17 +24,20 @@
       </div>
       <div class="fl-row sb cc-violet tb">
         <a
-          @click="getPrevPost()"
           class="btn__prev"
-        ><font-icon
-          icon="long-arrow-alt-left"
-        /> Prev post</a>
+          @click="getPrevPost()"
+        >
+          <font-icon icon="long-arrow-alt-left" />
+          Prev post
+        </a>
         <a
           class="btn__next"
           @click="getNextPost()"
-        >Next post <font-icon
-          icon="long-arrow-alt-right"
-        /></a>
+        > Next post
+          <font-icon
+            icon="long-arrow-alt-right"
+          />
+        </a>
       </div>
     </div>
   </div>
@@ -71,15 +74,11 @@ export default {
   },
   methods: {
     async init() {
-      const post = await PostService.getPost(
-        this.postId,
-      );
+      const post = await PostService.getPost(this.postId);
       this.$set(this, 'post', post);
     },
     async getNextPost() {
-      const nextPost = await PostService.getNextPost(
-        this.post.createdAt,
-      );
+      const nextPost = await PostService.getNextPost(this.post.createdAt);
 
       if (nextPost.length > 0) {
         this.$set(this, 'post', nextPost[0]);
@@ -89,9 +88,7 @@ export default {
     },
 
     async getPrevPost() {
-      const prevPost = await PostService.getPrevPost(
-        this.post.createdAt,
-      );
+      const prevPost = await PostService.getPrevPost(this.post.createdAt);
       if (prevPost.length > 0) {
         this.$set(this, 'post', prevPost[0]);
         const id = prevPost[0]._id;
@@ -102,7 +99,6 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
-
 .post {
   width: 100%;
 

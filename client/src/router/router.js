@@ -2,9 +2,9 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import About from '../views/About.vue';
 
-const Home = () => import(/* webpackChunkName: "Home view" */ '../views/Home.vue');
-const PostEditor = () => import(/* webpackChunkName: "Editor view" */ '../views/PostEditor.vue');
-const BlogPost = () => import(/* webpackChunkName: "Blog view" */ '../views/BlogPost.vue');
+const Home = () => import('../views/Home.vue');
+const PostEditor = () => import('../views/PostEditor.vue');
+const BlogPost = () => import('../views/BlogPost.vue');
 
 Vue.use(VueRouter);
 

@@ -1,24 +1,15 @@
 <template>
   <div id="app">
     <navigation-bar id="nav-bar" />
-    <div class="hero-wrapper mb-lg">
-      <h1 id="mainTitle">
-        In Wonderland of Programming
-      </h1>
-      <div class="hero" />
-      <div class="hero-wrapper__decor-container" />
-    </div>
-    <div class="fl-container">
-      <div class=" mt-xl">
-        <router-view />
-      </div>
-    </div>
+    <hero />
+    <router-view />
     <Footer />
     <ActionModal />
   </div>
 </template>
 
 <script>
+import Hero from './components/HeroComponent.vue';
 import NavigationBar from './components/NavigationComponent.vue';
 import Footer from './components/FooterComponent.vue';
 import ActionModal from './components/common/ActionModalComponent.vue';
@@ -29,6 +20,7 @@ export default {
     NavigationBar,
     ActionModal,
     Footer,
+    Hero,
   },
 };
 </script>
@@ -86,32 +78,7 @@ a {
   margin-right: auto;
   margin-left: auto;
   font-size: 1.8rem;
-}
-
-#mainTitle {
-  font-size: 3em;
-  font-weight: 500;
-  padding: 0 5rem;
-  text-align: left;
-  color: #2f2e41;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-.hero-wrapper {
-  width: 100%;
-  display: flex;
-  padding: 0 5rem;
-  margin-top: 15rem;
-  align-items: flex-start;
-}
-
-.hero {
-  background-image: url('./assets/images/undraw_web_development_w2vv.svg');
-  height: 400px;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-position: top;
-  width: 100%;
+  background: #f8f8f8;
 }
 
 .flex-container {

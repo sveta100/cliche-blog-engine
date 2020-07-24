@@ -1,22 +1,31 @@
 <template>
   <div id="nav-bar">
     <router-link
-      active-class="router-link "
-      class="router-link"
+      exact-active-class="logo no-anchor"
+      class="logo no-anchor"
+      to="/"
+      tag="a"
+    >
+      Sveta's Blog
+    </router-link>
+
+    <router-link
+      active-class="router-link"
+      class="router-link no-anchor"
       to="/"
     >
       Articles
     </router-link>|
     <router-link
       active-class="router-link "
-      class="router-link"
+      class="router-link no-anchor"
       to="/about"
     >
       About
     </router-link>|
     <router-link
       active-class="router-link "
-      class="router-link"
+      class="router-link no-anchor"
       to="/post-editor"
     >
       Post Editor
@@ -40,20 +49,33 @@ export default {
   z-index: 1;
   display: flex;
   align-items: center;
+  width: 100%;
+  background-color: $violet;
+}
+
+.logo {
+  width: 100px;
+  align-self: flex-start;
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  color: white;
+  display: flex;
+  align-items: center;
 }
 
 .router-link {
   text-decoration: none;
   margin: 8px;
   padding: 5px 10px;
-  color: #3a3636;
+  color: white;
   font-weight: 500;
   font-size: 18px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .router-link-exact-active {
-  opacity: 0.7;
   position: relative;
 
   &::after {

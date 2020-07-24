@@ -17,7 +17,7 @@ module.exports = {
     parser: 'babel-eslint',
     ecmaVersion: 2018,
     sourceType: 'module',
-    allowImportExportEverywhere: true
+    allowImportExportEverywhere: true,
   },
   plugins: ['vue'],
   rules: {
@@ -25,6 +25,6 @@ module.exports = {
     // allow console and debugger in development
     'no-console': process.env.NODE_ENV === 'production' ? 2 : 0,
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
+    'no-multiple-empty-lines': ['error', { max: 1 }],
   },
-  
 };
