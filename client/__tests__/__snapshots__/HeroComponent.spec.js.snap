@@ -1,7 +1,7 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Hero component renders correctly 1`] = `
-"<section class=\\"hero-wrapper mb-lg\\">
+"<section class=\\"hero-wrapper\\">
   <div class=\\"hero-wrapper hero-wrapper__content\\">
     <h1 id=\\"mainTitle\\">
       In Wonderland of Programming

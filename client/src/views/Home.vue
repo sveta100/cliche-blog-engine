@@ -3,12 +3,10 @@
     <div class="fl-container">
       <div class=" mt-xl">
         <div class="fl-row">
-          <div class="fl-row__col-9">
-            <PostList
-              class="post-list"
-              :items="posts"
-            />
-          </div>
+          <PostList
+            class="post-list"
+            :items="posts"
+          />
         </div>
       </div>
     </div>
@@ -53,9 +51,8 @@ export default {
 };
 </script>
 <style lang="scss">
-.portrait {
-  border-radius: 50%;
-  max-width: 100px;
+.post-list {
+  margin: 0 5rem;
 }
 
 .section {

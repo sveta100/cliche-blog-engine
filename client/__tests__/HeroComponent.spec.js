@@ -6,11 +6,12 @@ describe('Hero component', () => {
     path: '/',
   };
 
-  const heroFactory = (router) => shallowMount(Hero, {
-    mocks: {
-      $route: router,
-    },
-  });
+  const heroFactory = (router) =>
+    shallowMount(Hero, {
+      mocks: {
+        $route: router,
+      },
+    });
 
   test('renders correctly', () => {
     const wrapper = heroFactory($route);

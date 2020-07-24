@@ -1,5 +1,5 @@
 <template>
-  <section class="hero-wrapper mb-lg">
+  <section class="hero-wrapper">
     <div
       v-if="this.$route.path === '/'"
       class="hero-wrapper hero-wrapper__content"

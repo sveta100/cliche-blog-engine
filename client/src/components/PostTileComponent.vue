@@ -1,5 +1,13 @@
 <template>
   <div class="card mb-md">
+    <div class="card__side-section">
+      <div class="card__header-date">
+        <p class="fs-40">
+          {{ moment(post.createdAt).format('do') }}
+        </p>
+        <p> {{ moment(post.createdAt).format('MMM yyyy') }}</p>
+      </div>
+    </div>
     <div class="card__header pb-md">
       <div class="fl-row js align-baseline">
         <h1 @click="viewPost(post._id)">
@@ -17,14 +25,7 @@
           />
         </div>
       </div>
-      <div class="card__subheader js">
-        <div class="card__header-date">
-          <date-format
-            :raw-date="post.createdAt"
-            class="justify-center"
-          />
-        </div>
-      </div>
+      <div class="card__subheader js" />
     </div>
     <div class="card__content-wrapper">
       <div class="card__thumb" />
@@ -40,14 +41,13 @@
 </template>
 <script>
 import marked from 'marked';
-import DateFormat from './common/DateFormatComponent.vue';
+import moment from 'moment';
 import IconButton from './common/IconButtonComponent.vue';
 import MarkdownToHtml from './MarkdownToHtmlComponent.vue';
 
 export default {
   name: 'PostTile',
   components: {
-    DateFormat,
     IconButton,
     MarkdownToHtml,
   },
@@ -64,6 +64,8 @@ export default {
     },
   },
   methods: {
+    moment,
+
     viewPost(postId) {
       this.$router.push({ name: 'Blog post', params: { postId } });
     },
@@ -81,10 +83,27 @@ export default {
 
 <style lang="scss" scoped>
 .card {
-  width: 70rem;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  background: white;
+  position: relative;
+  padding: 5rem 5rem 5rem 15rem;
+
+  &__side-section {
+    width: 150px;
+    height: 150px;
+    background-color: $green;
+    border-radius: 50%;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    color: white;
+    justify-content: center;
+    left: -75px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 
   &__header {
     align-items: flex-start;
