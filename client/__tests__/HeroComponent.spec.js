@@ -6,12 +6,11 @@ describe('Hero component', () => {
     path: '/',
   };
 
-  const heroFactory = (router) =>
-    shallowMount(Hero, {
-      mocks: {
-        $route: router,
-      },
-    });
+  const heroFactory = (router) => shallowMount(Hero, {
+    mocks: {
+      $route: router,
+    },
+  });
 
   test('renders correctly', () => {
     const wrapper = heroFactory($route);
@@ -23,7 +22,7 @@ describe('Hero component', () => {
   test('renders correct markup', () => {
     const wrapper = heroFactory($route);
     const mainTitle = wrapper.find('#mainTitle');
-    console.log(wrapper.html());
+
     expect(mainTitle.exists()).toBe(true);
   });
 

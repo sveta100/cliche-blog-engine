@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <h3 class="mb-md">
+  <div class="n-mt">
+    <h3 class="mb-md center">
       Any great thoughts to express?
     </h3>
     <form class="editor fl-row mb-md">
@@ -119,6 +119,8 @@ export default {
 </script>
 <style lang="scss" scoped>
 .editor {
+  padding: 0 10rem 0 10rem;
+
   &__header {
     display: flex;
     flex-direction: column;

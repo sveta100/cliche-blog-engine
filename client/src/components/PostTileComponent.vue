@@ -1,31 +1,34 @@
 <template>
-  <div class="card mb-md">
-    <div class="card__side-section">
-      <div class="card__header-date">
-        <p class="fs-40">
-          {{ moment(post.createdAt).format('do') }}
-        </p>
-        <p> {{ moment(post.createdAt).format('MMM yyyy') }}</p>
-      </div>
+  <div class="card mb-xs rel">
+    <date-format :raw-date="post.createdAt" />
+    <div class="actions pb-xs">
+      <IconButton
+        :icon="'trash'"
+        class="mr-xs"
+        @click="deletePost(post._id)"
+      />
+      <IconButton
+        :icon="'pen'"
+        @click="editPost(post._id)"
+      />
     </div>
+
     <div class="card__header pb-md">
       <div class="fl-row js align-baseline">
-        <h1 @click="viewPost(post._id)">
+        <h2 @click="viewPost(post._id)">
           {{ post.title }}
-        </h1>
-        <div class="card__actions">
-          <IconButton
-            :icon="'trash'"
-            class="mr-xs"
-            @click="deletePost(post._id)"
-          />
-          <IconButton
-            :icon="'pen'"
-            @click="editPost(post._id)"
-          />
-        </div>
+        </h2>
       </div>
-      <div class="card__subheader js" />
+      <div class="card__subheader js">
+        <span
+          class="card__draft"
+          v-if="post.isDraft"
+        >
+          Draft
+          <font-icon icon="flag" />
+
+        </span>
+      </div>
     </div>
     <div class="card__content-wrapper">
       <div class="card__thumb" />
@@ -34,8 +37,8 @@
         class="card__content"
       />
     </div>
-    <div class="cc-violet tb">
-      <a @click="viewPost(post._id)">Read more...</a>
+    <div class="cc-violet tb mt-xs">
+      <a @click="viewPost(post._id)">READ MORE...</a>
     </div>
   </div>
 </template>
@@ -44,12 +47,14 @@ import marked from 'marked';
 import moment from 'moment';
 import IconButton from './common/IconButtonComponent.vue';
 import MarkdownToHtml from './MarkdownToHtmlComponent.vue';
+import DateFormat from './common/DateFormatComponent.vue';
 
 export default {
   name: 'PostTile',
   components: {
     IconButton,
     MarkdownToHtml,
+    DateFormat,
   },
   props: {
     post: {
@@ -83,6 +88,7 @@ export default {
 
 <style lang="scss" scoped>
 .card {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -90,19 +96,8 @@ export default {
   position: relative;
   padding: 5rem 5rem 5rem 15rem;
 
-  &__side-section {
-    width: 150px;
-    height: 150px;
-    background-color: $green;
-    border-radius: 50%;
-    position: absolute;
-    display: flex;
-    align-items: center;
-    color: white;
-    justify-content: center;
-    left: -75px;
-    top: 50%;
-    transform: translateY(-50%);
+  &__draft {
+    color: red;
   }
 
   &__header {
@@ -114,7 +109,7 @@ export default {
     &:hover {
       cursor: pointer;
 
-      & h1 {
+      & h2 {
         background:
           linear-gradient(
             90deg,
@@ -138,23 +133,15 @@ export default {
     text-align: justify;
   }
 
-  &__actions {
-    position: absolute;
-    opacity: 0;
-    transition: opacity 0.3s ease-in;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
-  }
-
   &__subheader {
     display: flex;
     font-size: 1.5rem;
-    align-items: center;
   }
 }
 
-.card__header:hover .card__actions {
-  opacity: 1;
+.actions {
+  position: absolute;
+  right: 0;
+  top: -50px;
 }
 </style>

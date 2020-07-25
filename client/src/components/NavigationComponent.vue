@@ -6,7 +6,8 @@
       to="/"
       tag="a"
     >
-      Sveta's Blog
+      <span>Sveta's blog </span>
+      <font-icon icon="feather" />
     </router-link>
 
     <router-link
@@ -40,7 +41,7 @@ export default {
 <style lang="scss">
 #nav-bar {
   align-self: flex-end;
-  padding: 1rem 8rem;
+  padding: 0 8rem;
   position: absolute;
   top: 0;
   justify-content: flex-end;
@@ -50,11 +51,13 @@ export default {
   display: flex;
   align-items: center;
   width: 100%;
-  background-color: $violet;
+  background: $violet;
 }
 
 .logo {
-  width: 100px;
+  width: 160px;
+  font-weight: 600;
+  font-size: 1.8rem;
   align-self: flex-start;
   position: absolute;
   left: 0;
@@ -63,6 +66,10 @@ export default {
   color: white;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  font-family: 'Heebo', sans-serif;
+  background: $green;
+  padding: 0 2rem;
 }
 
 .router-link {
@@ -70,9 +77,9 @@ export default {
   margin: 8px;
   padding: 5px 10px;
   color: white;
-  font-weight: 500;
+  font-weight: 600;
   font-size: 18px;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Heebo', sans-serif;
 }
 
 .router-link-exact-active {
@@ -81,7 +88,7 @@ export default {
   &::after {
     content: '';
     position: absolute;
-    top: 100%;
+    top: 80%;
     left: 50%;
     width: 10px;
     height: 10px;

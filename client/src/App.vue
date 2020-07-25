@@ -39,25 +39,30 @@ body,
 input,
 textarea {
   font-size: 1.6rem;
-  font-family: 'Montserrat', sans-serif;
-  line-height: 1.6;
+  font-family: 'Nunito', sans-serif;
+  line-height: 1.8;
 }
 
 h1,
 h2,
 h3 {
   color: $secondary;
+  font-family: 'Heebo', sans-serif;
+  text-align: left;
+  line-height: 1.25;
+  font-weight: 800;
 }
 
 h1 {
-  // font-size: 5rem;
-  font-weight: 500;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 5rem;
 }
 
 h2 {
-  font-size: 4rem;
-  font-weight: 100;
+  font-size: 3.5rem;
+}
+
+h3 {
+  font-size: 2.5rem;
 }
 
 a {

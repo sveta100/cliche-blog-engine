@@ -1,43 +1,40 @@
 <template>
-  <div class="fl-row">
-    <div class="post">
-      <div class="post__header pb-md">
-        <h1 class="mb-md">
-          {{ post.title }}
-        </h1>
-        <div class="post__header-date">
-          <date-format
-            :raw-date="post.createdAt"
-            class="justify-center"
+  <div class="fl-container">
+    <div class="fl-row">
+      <div class="post n-mt">
+        <div class="post__header pb-md mb-md">
+          <h1>
+            {{ post.title }}
+          </h1>
+          <TagList
+            :options="post.tags"
+            :with-background="false"
           />
         </div>
-        <TagList
-          :options="post.tags"
-          :with-background="false"
-        />
-      </div>
-      <div class="post__content-wrapper mb-lg">
-        <MarkdownToHtml
-          :markdown="post.content"
-          class="post__content"
-        />
-      </div>
-      <div class="fl-row sb cc-violet tb">
-        <a
-          class="btn__prev"
-          @click="getPrevPost()"
-        >
-          <font-icon icon="long-arrow-alt-left" />
-          Prev post
-        </a>
-        <a
-          class="btn__next"
-          @click="getNextPost()"
-        > Next post
-          <font-icon
-            icon="long-arrow-alt-right"
+        <div class="rel">
+          <date-format :raw-date="post.createdAt" />
+        </div>
+        <div class="post__content-wrapper mb-lg">
+          <MarkdownToHtml
+            :markdown="post.content"
+            class="post__content"
           />
-        </a>
+        </div>
+        <div class="post__nav fl-row sb tb">
+          <a
+            class="post__prev"
+            @click="getPrevPost()"
+          >
+            <font-icon icon="long-arrow-alt-left" />
+            Prev post
+          </a>
+          <a
+            class="post__next"
+            @click="getNextPost()"
+          > Next post
+            <font-icon icon="long-arrow-alt-right" />
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -101,14 +98,32 @@ export default {
 <style lang="scss" scoped>
 .post {
   width: 100%;
+  background: white;
+  padding: 0 10rem 0 0;
+
+  &__header {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 0 15rem;
+  }
 
   &__content {
     text-align: left;
+    padding: 0 5rem 0 15rem;
   }
 
   &__nav {
     justify-content: space-between;
     width: 100%;
+    padding: 5rem 10rem 10rem 15rem;
+  }
+
+  &__next,
+  &__prev {
+    &:hover {
+      color: $violet;
+    }
   }
 }
 </style>

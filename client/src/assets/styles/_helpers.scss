@@ -22,8 +22,20 @@
   margin-right: 1rem;
 }
 
+.mt-xs {
+  margin-top: 1rem;
+}
+
+.mb-xs {
+  margin-bottom: 1 rem;
+}
+
 .ml-xs {
   margin-left: 1rem;
+}
+
+.n-mt {
+  margin-top: -250px;
 }
 
 .pb-md {
@@ -34,7 +46,15 @@
   padding-bottom: 2.5rem;
 }
 
+.pb-xs {
+  padding-bottom: 1rem;
+}
+
 // flex
+.fl {
+  display: flex;
+}
+
 .justify-sb {
   justify-content: space-between;
 }
@@ -53,6 +73,10 @@
 
 .align-baseline {
   align-items: baseline;
+}
+
+.ac {
+  align-items: center;
 }
 
 .fl-grow-1 {
@@ -92,6 +116,10 @@
   font-weight: bold;
 }
 
+.center {
+  text-align: center;
+}
+
 .no-anchor {
   text-decoration: none;
 
@@ -103,6 +131,12 @@
 }
 
 //font -todo: create typography
-.fs-50 {
+.fs-40 {
   font-size: 40px;
+}
+
+//positions
+
+.rel {
+  position: relative;
 }

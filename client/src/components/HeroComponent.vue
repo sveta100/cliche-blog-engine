@@ -19,17 +19,17 @@ export default {
 </script>
 <style lang="scss">
 #mainTitle {
-  font-size: 3em;
-  font-weight: 500;
-  padding: 0 5rem 0 15rem;
+  font-size: 6rem;
+  font-weight: 600;
+  padding: 0 5rem 0 10rem;
   text-align: left;
   color: #2f2e41;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'Heebo', sans-serif;
 }
 
 .hero-wrapper {
   background: white;
-  min-height: 300px;
+  min-height: 450px;
   width: 100%;
   padding: 5rem 0;
 

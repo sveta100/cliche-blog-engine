@@ -30,9 +30,9 @@ export default {
   margin: 5px;
   background: $gray-100;
   color: $tertiary-cc;
-  padding: 5px 8px;
+  padding: 5px;
   transition: all 0.3s ease-in;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   text-transform: uppercase;
 
   &:hover {
@@ -43,6 +43,7 @@ export default {
   &--no-background {
     background: transparent;
     font-weight: 800;
+    opacity: 0.7;
 
     &::before {
       content: '\0023';

@@ -5,7 +5,7 @@
       class="popup"
     >
       <div class="popup__content">
-        <h2 class="margin-top">
+        <h2 class="margin-top center">
           Are you sure?
         </h2>
         <div class="popup__actions">
