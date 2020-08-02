@@ -2,12 +2,7 @@ import { mount } from '@vue/test-utils';
 import Button from '../src/components/common/ButtonComponent.vue';
 
 describe('Button component', () => {
-  const onClick = jest.fn();
-  const wrapper = mount(Button, {
-    listeners: {
-      click: onClick,
-    },
-  });
+  const wrapper = mount(Button);
 
   test('renders correctly', () => {
     expect(wrapper.html()).toMatchSnapshot();
@@ -18,8 +13,9 @@ describe('Button component', () => {
     expect(btn.exists()).toBe(true);
   });
 
-  test('once clicked an event is emitted', () => {
-    wrapper.trigger('click');
-    expect(onClick).toHaveBeenCalled();
+  test('once clicked an event is emitted', async () => {
+    const btn = wrapper.find('button');
+    await btn.trigger('click');
+    expect(wrapper.emitted().click).toBeTruthy();
   });
 });

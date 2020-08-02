@@ -16,13 +16,10 @@
 import PostService from '../../services/PostService';
 import PostList from '../components/PostListComponent.vue';
 
-import TagService from '../../services/TagService';
-
 export default {
   name: 'Home',
   components: {
     PostList,
-
   },
   data() {
     return {
@@ -36,11 +33,6 @@ export default {
   methods: {
     async init() {
       await this.getPosts();
-      await this.getTags();
-    },
-    async getTags() {
-      const tags = await TagService.getTags();
-      this.$set(this, 'tags', tags);
     },
     async getPosts() {
       await PostService.getPublishedPosts().then((posts) => {

@@ -3,10 +3,10 @@ services:
 
 before_install:
   - docker build -t svetab/vue-blog-test -f ./client/Dockerfile.dev ./client
-  
+
 script:
-  - docker run svetab/vue-blog-test npm run test -- --coverage
-  
+  - docker run svetab/vue-blog-test npm run test:build -- --coverage
+
 after_success:
   - docker build -t svetab/vue-blog-client ./client
   - docker build -t svetab/vue-blog-nginx ./nginx
@@ -17,5 +17,3 @@ after_success:
   - docker push svetab/vue-blog-client
   - docker push svetab/vue-blog-nginx
   - docker push svetab/vue-blog-server
-
-

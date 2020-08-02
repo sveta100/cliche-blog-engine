@@ -12,7 +12,10 @@
 import Hero from './components/HeroComponent.vue';
 import NavigationBar from './components/NavigationComponent.vue';
 import Footer from './components/FooterComponent.vue';
-import ActionModal from './components/common/ActionModalComponent.vue';
+
+const ActionModal = () =>
+  // eslint-disable-next-line implicit-arrow-linebreak
+  import('./components/common/ActionModalComponent.vue');
 
 export default {
   name: 'App',

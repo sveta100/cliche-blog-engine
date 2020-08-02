@@ -44,7 +44,6 @@
 </template>
 <script>
 import marked from 'marked';
-import moment from 'moment';
 import IconButton from './common/IconButtonComponent.vue';
 import MarkdownToHtml from './MarkdownToHtmlComponent.vue';
 import DateFormat from './common/DateFormatComponent.vue';
@@ -69,8 +68,6 @@ export default {
     },
   },
   methods: {
-    moment,
-
     viewPost(postId) {
       this.$router.push({ name: 'Blog post', params: { postId } });
     },

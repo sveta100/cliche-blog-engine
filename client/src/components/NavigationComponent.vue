@@ -7,9 +7,7 @@
       tag="a"
     >
       <span>Sveta's blog </span>
-      <font-icon icon="feather" />
     </router-link>
-
     <router-link
       active-class="router-link"
       class="router-link no-anchor"
@@ -68,7 +66,6 @@ export default {
   align-items: center;
   justify-content: space-between;
   font-family: 'Heebo', sans-serif;
-  background: $green;
   padding: 0 2rem;
 }
 

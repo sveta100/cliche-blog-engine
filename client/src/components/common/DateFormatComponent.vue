@@ -2,7 +2,7 @@
   <div class="date-wrapper">
     <div class="card__header-date">
       <p class="fs-40">
-        {{ moment(rawDate).format('do') }}
+        {{ moment(rawDate).format('Do') }}
       </p>
       <p> {{ moment(rawDate).format('MMM yyyy') }}</p>
     </div>
