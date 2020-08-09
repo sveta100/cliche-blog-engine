@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "A cliche blogging app to learn vue.js",
   "scripts": {
-    "test:build":  "jest",
+    "test:build": "jest",
     "test": "jest --watchAll --coverage",
     "serve": "webpack-dev-server --config webpack.dev.js --open",
     "serve:docker": "webpack-dev-server --config webpack.dev.js --open",

@@ -1,7 +1,6 @@
 const path = require('path');
 const { VueLoaderPlugin } = require('vue-loader');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 module.exports = {
   entry: {
@@ -84,6 +83,5 @@ module.exports = {
       template: './public/index.html',
     }),
     new VueLoaderPlugin(),
-    new CleanWebpackPlugin(),
   ],
 };
